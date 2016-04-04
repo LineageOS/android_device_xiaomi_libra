@@ -1,4 +1,4 @@
-  lge)
+  xiaomi)
     TO_EXTRACT="\
             IMAGES/vendor.img \
             "

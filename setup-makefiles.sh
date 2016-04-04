@@ -1,7 +1,7 @@
 #!/bin/bash
-export VENDOR=lge
-export DEVICE_VENDOR=lge
-export DEVICE=bullhead
+export VENDOR=xiaomi
+export DEVICE_VENDOR=xiaomi
+export DEVICE=libra
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 VENDOR_MAKEFILE=../../../$OUTDIR/device-vendor.mk

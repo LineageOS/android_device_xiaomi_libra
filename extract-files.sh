@@ -1,7 +1,7 @@
 #!/bin/bash
-export VENDOR=lge
-export DEVICE_VENDOR=lge
-export DEVICE=bullhead
+export VENDOR=xiaomi
+export DEVICE_VENDOR=xiaomi
+export DEVICE=libra
 # Check to see if the user passed a folder in to extract from rather than adb pull
 if [ $# -eq 1 ]; then
 COPY_FROM=$1

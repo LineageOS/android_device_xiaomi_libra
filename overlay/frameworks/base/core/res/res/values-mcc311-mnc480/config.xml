@@ -57,10 +57,4 @@
         <item>SUPL_ES=1</item>
     </string-array>
 
-    <!-- MMS user agent string -->
-    <string name="config_mms_user_agent" translatable="false">nexus5x</string>
-
-    <!-- MMS user agent prolfile url -->
-    <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.vtext.com/lg/nexus5x/nexus5x.xml</string>
-
 </resources>

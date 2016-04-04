@@ -31,9 +31,11 @@ ENABLE_CPUSETS := true
 TARGET_NO_BOOTLOADER := true
 
 # Inline kernel
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_SOURCE := kernel/lge/bullhead
-TARGET_KERNEL_CONFIG := cyanogenmod_bullhead_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_DTBTOOL_ARGS := -2
+TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8992
+TARGET_KERNEL_CONFIG := blackhawk_libra_defconfig
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
@@ -45,7 +47,7 @@ BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=bullhead boot_cpus=0-5
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=libra boot_cpus=0-5
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 msm_poweroff.download_mode=0
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -60,7 +62,7 @@ AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/bullhead/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/xiaomi/libra/bluetooth
 BOARD_HAS_QCA_BT_ROME := true
 WCNSS_FILTER_USES_SIBS := true
 BOARD_BLUETOOTH_BDROID_HCILP_INCLUDED := false
@@ -81,11 +83,11 @@ BOARD_USES_SECURE_SERVICES := true
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8992
-TARGET_BOOTLOADER_BOARD_NAME := bullhead
-TARGET_BOARD_INFO_FILE := device/lge/bullhead/board-info.txt
+TARGET_BOOTLOADER_BOARD_NAME := libra
+TARGET_BOARD_INFO_FILE := device/xiaomi/libra/board-info.txt
 TARGET_NO_RPC := true
 
-BOARD_EGL_CFG := device/lge/bullhead/egl.cfg
+BOARD_EGL_CFG := device/xiaomi/libra/egl.cfg
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
@@ -117,22 +119,23 @@ ifeq ($(HOST_OS),linux)
 endif
 
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 11649679360
-BOARD_CACHEIMAGE_PARTITION_SIZE := 100663296
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2013265920
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 27980184576
+BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Build a separate vendor.img
 TARGET_COPY_OUT_VENDOR := system
 
-BOARD_HAL_STATIC_LIBRARIES := libdumpstate.bullhead
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.libra
 
-TARGET_RECOVERY_FSTAB = device/lge/bullhead/fstab.bullhead
+TARGET_RECOVERY_FSTAB = device/xiaomi/libra/fstab.libra
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/lge/bullhead
+TARGET_RELEASETOOLS_EXTENSIONS := device/xiaomi/libra
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
@@ -140,7 +143,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
 BOARD_SEPOLICY_DIRS += \
-    device/lge/bullhead/sepolicy
+    device/xiaomi/libra/sepolicy
 
 TARGET_USES_64_BIT_BINDER := true
 
@@ -163,4 +166,4 @@ EXTENDED_FONT_FOOTPRINT := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := hardware/cyanogen/cmhw
 
--include vendor/lge/bullhead/BoardConfigVendor.mk
+-include vendor/xiaomi/libra/BoardConfigVendor.mk

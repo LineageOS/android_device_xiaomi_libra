@@ -14,52 +14,48 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL bullhead devices, and
-# are also specific to bullhead devices
+# This file includes all definitions that apply to ALL libra devices, and
+# are also specific to libra devices
 #
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.rc:root/init.bullhead.rc \
-    device/lge/bullhead/init.bullhead.usb.rc:root/init.bullhead.usb.rc \
-    device/lge/bullhead/fstab.bullhead:root/fstab.bullhead \
-    device/lge/bullhead/ueventd.bullhead.rc:root/ueventd.bullhead.rc \
-    device/lge/bullhead/init.bullhead.sensorhub.rc:root/init.bullhead.sensorhub.rc \
-    device/lge/bullhead/init.bullhead.ramdump.rc:root/init.bullhead.ramdump.rc \
-    device/lge/bullhead/init.bullhead.fp.rc:root/init.bullhead.fp.rc
+    device/xiaomi/libra/init.libra.rc:root/init.libra.rc \
+    device/xiaomi/libra/init.libra.usb.rc:root/init.libra.usb.rc \
+    device/xiaomi/libra/fstab.libra:root/fstab.libra \
+    device/xiaomi/libra/ueventd.libra.rc:root/ueventd.libra.rc \
+    device/xiaomi/libra/init.libra.ramdump.rc:root/init.libra.ramdump.rc \
+    device/xiaomi/libra/init.libra.fp.rc:root/init.libra.fp.rc
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    device/lge/bullhead/media_codecs.xml:system/etc/media_codecs.xml \
-    device/lge/bullhead/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    device/lge/bullhead/media_profiles.xml:system/etc/media_profiles.xml
+    device/xiaomi/libra/media_codecs.xml:system/etc/media_codecs.xml \
+    device/xiaomi/libra/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    device/xiaomi/libra/media_profiles.xml:system/etc/media_profiles.xml
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/audio_policy.conf:system/etc/audio_policy.conf \
-    device/lge/bullhead/audio_effects.conf:system/etc/audio_effects_vendor.conf \
-    device/lge/bullhead/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/lge/bullhead/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    device/xiaomi/libra/audio_policy.conf:system/etc/audio_policy.conf \
+    device/xiaomi/libra/audio_effects.conf:system/etc/audio_effects_vendor.conf \
+    device/xiaomi/libra/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/xiaomi/libra/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 #Sound Trigger
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    device/lge/bullhead/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
+    device/xiaomi/libra/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    device/xiaomi/libra/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
 
 # Input device files
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/lge/bullhead/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl
-
-# for launcher layout
-#PRODUCT_PACKAGES += \
-#    BullheadLayout
-
-# Prebuilt input device calibration files
-PRODUCT_COPY_FILES += \
-    device/lge/bullhead/synaptics_rmi4_i2c.idc:system/usr/idc/synaptics_rmi4_i2c.idc
+    device/xiaomi/libra/keylayout/atmel-maxtouch.kl:system/usr/keylayout/atmel-maxtouch.kl \
+    device/xiaomi/libra/keylayout/atmel-maxtouch-edge.kl:system/usr/keylayout/atmel-maxtouch-edge.kl \
+    device/xiaomi/libra/keylayout/ft5x46.kl:system/usr/keylayout/ft5x46.kl \
+    device/xiaomi/libra/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/xiaomi/libra/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl \
+    device/xiaomi/libra/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl \
+    device/xiaomi/libra/keylayout/synaptics_dsx_edge.kl:system/usr/keylayout/synaptics_dsx_edge.kl
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -97,31 +93,31 @@ PRODUCT_COPY_FILES += \
 
 # For SPN display
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/spn-conf.xml:system/etc/spn-conf.xml
+    device/xiaomi/libra/spn-conf.xml:system/etc/spn-conf.xml
 
 # For GPS
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/sec_config:system/etc/sec_config
+    device/xiaomi/libra/sec_config:system/etc/sec_config
 
 # NFC config files
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/lge/bullhead/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+    device/xiaomi/libra/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/xiaomi/libra/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # For WiFi
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/lge/bullhead/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/lge/bullhead/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    device/lge/bullhead/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    device/xiaomi/libra/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/xiaomi/libra/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/xiaomi/libra/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    device/xiaomi/libra/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
 # Power configuration file
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.power.sh:system/bin/init.bullhead.power.sh
+    device/xiaomi/libra/init.libra.power.sh:system/bin/init.libra.power.sh
 
 # MBN
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.sh:system/bin/init.bullhead.sh
+    device/xiaomi/libra/init.libra.sh:system/bin/init.libra.sh
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -141,7 +137,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8992 \
     libgenlock \
     memtrack.msm8992 \
-    lights.bullhead
+    lights.libra
 
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -174,18 +170,18 @@ PRODUCT_PACKAGES += \
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/gps.conf:system/etc/gps.conf
+    device/xiaomi/libra/gps.conf:system/etc/gps.conf
 
 # NFC packages
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
-    nfc_nci.bullhead \
+    nfc_nci.libra \
     NfcNci \
     Tag
 
 # Fingerprint Sensor
 PRODUCT_PACKAGES += \
-    fingerprint.bullhead
+    fingerprint.libra
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
@@ -212,9 +208,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensor & activity_recognition HAL
 PRODUCT_PACKAGES += \
-    sensors.bullhead \
-    activity_recognition.bullhead \
-    sensortool.bullhead
+    sensors.libra \
+    activity_recognition.libra
 
 PRODUCT_PACKAGES += \
     keystore.msm8992 \
@@ -225,7 +220,7 @@ PRODUCT_PACKAGES += \
    fs_config_files
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/lge/bullhead/overlay
+    device/xiaomi/libra/overlay
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -394,7 +389,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    power.bullhead
+    power.libra
 
 # Modem debugger/misc
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -402,22 +397,12 @@ PRODUCT_PACKAGES += \
     QXDMLogger
 
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.diag.rc.userdebug:root/init.bullhead.diag.rc \
-    device/lge/bullhead/init.bullhead.misc.rc.userdebug:root/init.bullhead.misc.rc
+    device/xiaomi/libra/init.libra.diag.rc.userdebug:root/init.libra.diag.rc \
+    device/xiaomi/libra/init.libra.misc.rc.userdebug:root/init.libra.misc.rc
 else
 PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.diag.rc.user:root/init.bullhead.diag.rc \
-    device/lge/bullhead/init.bullhead.misc.rc.user:root/init.bullhead.misc.rc
-endif
-
-# only include verity on user builds for CM
-ifeq ($(TARGET_BUILD_VARIANT),user)
-   PRODUCT_COPY_FILES += device/lge/bullhead/fstab-verity.bullhead:root/fstab.bullhead
-
-# setup dm-verity configs.
-PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/system
-#PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor
-$(call inherit-product, build/target/product/verity.mk)
+    device/xiaomi/libra/init.libra.diag.rc.user:root/init.libra.diag.rc \
+    device/xiaomi/libra/init.libra.misc.rc.user:root/init.libra.misc.rc
 endif
 
 # setup dalvik vm configs.

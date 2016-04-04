@@ -9,17 +9,17 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
+$(call inherit-product, device/xiaomi/libra/aosp_libra.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := cm_bullhead
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Nexus 5X
-TARGET_MANUFACTURER := LGE
+PRODUCT_NAME := cm_libra
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := Mi-4c
+TARGET_MANUFACTURER := Xiaomi
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=bullhead \
-    BUILD_FINGERPRINT=google/bullhead/bullhead:6.0.1/MHC19J/2595691:user/release-keys \
-    PRIVATE_BUILD_DESC="bullhead-user 6.0.1 MHC19J 2595691 release-keys" \
-    BUILD_ID=MHC19J
+    PRODUCT_NAME=libra \
+    BUILD_FINGERPRINT=Xiaomi/libra/libra:5.1.1/LMY47V/V7.2.3.0.LXKCNDA:user/release-keys \
+    PRIVATE_BUILD_DESC="libra-user 5.1.1 LMY47V V7.2.3.0.LXKCNDA release-keys" \
+    BUILD_ID=LMY47V

@@ -1,0 +1,4 @@
+# This file gets copied as /init.libra.diag.rc
+
+on boot
+    rm /dev/diag
