@@ -36,6 +36,11 @@
 -priv-app/HotwordEnrollment/HotwordEnrollment.apk
 -priv-app/LifeTimerService/LifeTimerService.apk
 -priv-app/SprintDM/SprintDM.apk
+-framework/cneapiclient.jar
+-framework/com.google.widevine.software.drm.jar
+-framework/qcrilhook.jar
+-framework/rcsimssettings.jar
+-framework/rcsservice.jar
 bin/ATFWD-daemon
 bin/btnvtool
 bin/cnd
@@ -88,11 +93,6 @@ etc/qcril.db
 etc/sap.conf
 etc/sysconfig/whitelist_com.android.omadm.service.xml
 etc/thermal-engine-8992.conf
-framework/cneapiclient.jar
-framework/com.google.widevine.software.drm.jar
-framework/qcrilhook.jar
-framework/rcsimssettings.jar
-framework/rcsservice.jar
 lib/hw/camera.msm8992.so
 lib/hw/fingerprint.libra.so
 lib/hw/gps.msm8992.so
