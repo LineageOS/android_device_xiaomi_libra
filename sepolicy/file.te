@@ -6,6 +6,7 @@ type msm_irqbalance_socket, file_type;
 
 # Default type for anything under /firmware
 type firmware_file, fs_type, contextmount_type;
+type bt_firmware_file, fs_type, contextmount_type;
 type fsg_file, fs_type, contextmount_type;
 
 type cnd_socket, file_type;
