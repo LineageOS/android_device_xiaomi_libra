@@ -164,4 +164,7 @@ EXTENDED_FONT_FOOTPRINT := true
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := hardware/cyanogen/cmhw
 
+# Disable Jack & Jill compilation
+ANDROID_COMPILE_WITH_JACK := false
+
 -include vendor/xiaomi/libra/BoardConfigVendor.mk
