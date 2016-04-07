@@ -2,5 +2,9 @@
   {
     "repository": "android_kernel_xiaomi_msm8992",
     "target_path": "kernel/xiaomi/msm8992"
+  },
+  {
+    "repository": "android_external_stlport",
+    "target_path": "external/stlport"
   }
 ]

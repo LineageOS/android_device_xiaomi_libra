@@ -191,6 +191,10 @@ PRODUCT_PACKAGES += \
     sensors.libra \
     activity_recognition.libra
 
+# Build stlport for legacy blobs
+PRODUCT_PACKAGES += \
+    libstlport
+
 PRODUCT_PACKAGES += \
     keystore.msm8992 \
     gatekeeper.msm8992
