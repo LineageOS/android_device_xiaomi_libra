@@ -161,6 +161,9 @@ TARGET_PER_MGR_ENABLED := true
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# Double tap to wake
+TARGET_TAP_TO_WAKE_NODE := "/sys/class/input/input1/wake_gesture"
+
 # CM Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := hardware/cyanogen/cmhw

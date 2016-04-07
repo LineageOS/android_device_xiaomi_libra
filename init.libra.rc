@@ -164,6 +164,12 @@ on boot
     chown system system /sys/class/leds/blue/on_off_ms
     chown system system /sys/class/leds/red/rgb_start
 
+    # Touchscreen
+    chown root system /sys/class/input/input1/wake_gesture
+    chmod 0660 /sys/class/input/input1/wake_gesture
+    chown root system /sys/class/input/input1/edge_mode
+    chmod 0660 /sys/class/input/input1/edge_mode
+
 on post-fs-data
     # Mark the copy complete flag to not completed
     mkdir /data/misc/radio 0770 radio radio
