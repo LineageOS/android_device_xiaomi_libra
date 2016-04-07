@@ -268,7 +268,7 @@
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
 
     <!-- Is the device capable of hot swapping an UICC Card -->
-    <bool name="config_hotswapCapable">true</bool>
+    <bool name="config_hotswapCapable">false</bool>
 
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
