@@ -45,7 +45,6 @@ bin/ATFWD-daemon
 bin/btnvtool
 bin/cnd
 bin/cnss-daemon
-bin/fingerprintd
 bin/ims_rtp_daemon
 bin/imscmservice
 bin/imsdatadaemon
@@ -94,10 +93,8 @@ etc/sap.conf
 etc/sysconfig/whitelist_com.android.omadm.service.xml
 etc/thermal-engine-8992.conf
 lib/hw/camera.msm8992.so
-lib/hw/fingerprint.libra.so
 lib/hw/gps.msm8992.so
 lib/hw/local_time.default.so
-lib/lib_fpc_tac_shared.so
 lib/libdmengine.so
 lib/libdmjavaplugin.so
 lib/libgps.utils.so
@@ -111,9 +108,7 @@ lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
 lib/soundfx/libfmas.so
-lib64/hw/fingerprint.libra.so
 lib64/hw/gps.msm8992.so
-lib64/lib_fpc_tac_shared.so
 lib64/libgps.utils.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
