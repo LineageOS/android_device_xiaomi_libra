@@ -84,8 +84,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:system/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml \
@@ -98,11 +96,6 @@ PRODUCT_COPY_FILES += \
 # For GPS
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/sec_config:system/etc/sec_config
-
-# NFC config files
-PRODUCT_COPY_FILES += \
-    device/xiaomi/libra/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/xiaomi/libra/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # For WiFi
 PRODUCT_COPY_FILES += \
@@ -171,13 +164,6 @@ PRODUCT_PACKAGES += \
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/gps.conf:system/etc/gps.conf
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    nfc_nci.libra \
-    NfcNci \
-    Tag
 
 # Fingerprint Sensor
 PRODUCT_PACKAGES += \
@@ -382,10 +368,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Incoming number (b/23529711)
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.redir_party_num=0
-
-# NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.camera.notify_nfc=1
 
 # Power HAL
 PRODUCT_PACKAGES += \
