@@ -39,7 +39,8 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/libra/audio_policy.conf:system/etc/audio_policy.conf \
     device/xiaomi/libra/audio_effects.conf:system/etc/audio_effects_vendor.conf \
     device/xiaomi/libra/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/xiaomi/libra/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    device/xiaomi/libra/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/xiaomi/libra/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
 
 #Sound Trigger
 PRODUCT_COPY_FILES += \
@@ -212,7 +213,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluencepro \
+    ro.qc.sdk.audio.ssr=true \
+    persist.audio.ssr.3mic=true \
+    ro.qc.sdk.audio.fluencetype=fluence \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
