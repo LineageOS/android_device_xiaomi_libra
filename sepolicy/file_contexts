@@ -74,8 +74,6 @@
 /dev/msm_thermal_query                 u:object_r:thermal_device:s0
 /dev/qseecom                           u:object_r:tee_device:s0
 
-/dev/spich                             u:object_r:sensors_device:s0
-
 # MSM camera related
 /dev/media[0-9]+                       u:object_r:camera_device:s0
 /dev/jpeg[0-9]+                        u:object_r:camera_device:s0
