@@ -264,7 +264,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_height=1024
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/persistent
+    ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/config
 
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
