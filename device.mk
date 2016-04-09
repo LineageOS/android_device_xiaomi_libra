@@ -40,7 +40,8 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/libra/audio/audio_effects.conf:system/etc/audio_effects_vendor.conf \
     device/xiaomi/libra/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/xiaomi/libra/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/xiaomi/libra/audio/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
+    device/xiaomi/libra/audio/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg \
+    device/xiaomi/libra/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
 
 #Sound Trigger
 PRODUCT_COPY_FILES += \
