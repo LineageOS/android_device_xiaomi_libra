@@ -93,6 +93,7 @@ etc/sap.conf
 etc/sysconfig/whitelist_com.android.omadm.service.xml
 etc/thermal-engine-8992.conf
 lib/hw/camera.msm8992.so
+lib/hw/consumerir.msm8992.so
 lib/hw/gps.msm8992.so
 lib/hw/local_time.default.so
 lib/libdmengine.so
@@ -108,6 +109,7 @@ lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
 lib/soundfx/libfmas.so
+lib64/hw/consumerir.msm8992.so
 lib64/hw/gps.msm8992.so
 lib64/libgps.utils.so
 lib64/libimscamera_jni.so
