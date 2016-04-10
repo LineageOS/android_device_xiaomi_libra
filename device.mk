@@ -183,8 +183,7 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface2 \
     libmmjpeg_interface \
     libqomx_core \
-    mm-qcamera-app \
-    Snap
+    mm-qcamera-app
 
 # Snap Config
 PRODUCT_PROPERTY_OVERRIDES += \
