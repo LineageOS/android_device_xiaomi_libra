@@ -9,3 +9,7 @@ allow mediaserver perfd_data_file:dir search;
 allow mediaserver perfd_data_file:sock_file write;
 allow mediaserver perfd:unix_dgram_socket sendto;
 allow mediaserver perfd:unix_stream_socket connectto;
+
+allow mediaserver sensorservice_service:service_manager find;
+binder_call(mediaserver, servicemanager);
+binder_call(mediaserver, sensorservice_service);

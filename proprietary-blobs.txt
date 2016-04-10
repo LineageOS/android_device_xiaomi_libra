@@ -381,7 +381,7 @@ vendor/lib64/libwms.so
 vendor/lib64/libxml.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
-lib/hw/camera.msm8992.so
+lib/hw/camera.vendor.msm8992.so
 vendor/lib/libFaceProc.so
 vendor/lib/libOpenCL.so
 vendor/lib/libarcsoft_beauty_shot.so
