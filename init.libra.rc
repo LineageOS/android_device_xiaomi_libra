@@ -68,7 +68,7 @@ on init
 
     write /proc/sys/vm/page-cluster 0
 
-    export LD_SHIM_LIBS /vendor/bin/mm-qcamera-daemon|libshim_camera.so:/system/lib/libmmcamera_interface.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_sensor_modules.so|libshim_camera.so
+    export LD_SHIM_LIBS /system/lib/libmmcamera_interface.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_sensor_modules.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_camera.so
 
 on fs
     mount_all ./fstab.libra
