@@ -199,6 +199,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstlport
 
+# Legacy blob symbols
+PRODUCT_PACKAGES += \
+    libshim_camera
+
 PRODUCT_PACKAGES += \
     keystore.msm8992 \
     gatekeeper.msm8992
