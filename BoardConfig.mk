@@ -154,6 +154,7 @@ TARGET_USES_INTERACTION_BOOST := true
 # 32-bit or 64-bit), the following line should be deleted
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
