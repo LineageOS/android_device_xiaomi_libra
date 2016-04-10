@@ -203,7 +203,6 @@ vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
-vendor/lib/libfastcvopt.so
 vendor/lib/libfrsdk.so
 vendor/lib/libgoog_eis_armeabi-v7a.so
 vendor/lib/libgoog_rownr.so
@@ -384,7 +383,10 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
 lib/hw/camera.msm8992.so
 vendor/lib/libFaceProc.so
+vendor/lib/libOpenCL.so
 vendor/lib/libarcsoft_beauty_shot.so
+vendor/lib/libfastcvadsp_stub.so
+vendor/lib/libfastcvopt.so
 vendor/lib/libscve.so
 vendor/lib/libscveTextRecoPostProcessing.so
 vendor/lib/libscve_mv.so
@@ -738,6 +740,7 @@ vendor/lib/libchromatix_s5k3m2xx_preview.so
 vendor/lib/libchromatix_s5k3m2xx_snapshot.so
 vendor/lib/libchromatix_s5k3m2xx_video_4k.so
 
+vendor/lib64/libOpenCL.so
 vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_sensor_debug.so
 vendor/lib64/libmmcamera2_stats_algorithm.so
