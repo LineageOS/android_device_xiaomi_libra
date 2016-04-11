@@ -14,8 +14,6 @@
 
 # IIO sensors HAL module implementation, compiled as hw/iio-sensors-hal.so
 
-ifeq ($(USE_IIO_SENSOR_HAL),true)
-
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -34,11 +32,11 @@ src_files := $(src_path)/entry.c \
 	     $(src_path)/discovery.c \
 	     $(src_path)/accel-calibration.c \
 
-LOCAL_C_INCLUDES += $(LOCAL_PATH) vendor/intel/hardware/iio-sensors
+LOCAL_C_INCLUDES += $(LOCAL_PATH)
 ifeq ($(HAL_AUTODETECT),true)
 LOCAL_MODULE := iio-sensors-hal
 else
-LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE := sensors.iio-lsm6db0
 endif
 LOCAL_MODULE_OWNER := intel
 LOCAL_MODULE_RELATIVE_PATH := hw
@@ -55,7 +53,7 @@ LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_C_INCLUDES += $(LOCAL_PATH) vendor/intel/hardware/iio-sensors
+LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_MODULE := sens
 LOCAL_CFLAGS := -DLOG_TAG=\"Sensors\" -fvisibility=hidden
 LOCAL_SHARED_LIBRARIES := liblog libcutils libdl
@@ -64,7 +62,6 @@ LOCAL_MODULE_TAGS := eng
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_EXECUTABLE)
 
-endif
 
 
 # Activity HAL module implementation
@@ -78,7 +75,7 @@ activity_src_files := $(src_path)/activity_event_entry.c \
 		      $(src_path)/discovery.c \
 	              $(src_path)/utils.c \
 
-LOCAL_C_INCLUDES += $(LOCAL_PATH) vendor/intel/hardware/iio-sensors
+LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_MODULE := activity_recognition.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_OWNER := intel
 LOCAL_MODULE_RELATIVE_PATH := hw
@@ -92,7 +89,7 @@ LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_C_INCLUDES += $(LOCAL_PATH) vendor/intel/hardware/iio-sensors
+LOCAL_C_INCLUDES += $(LOCAL_PATH)
 LOCAL_MODULE := activity
 LOCAL_CFLAGS := -DLOG_TAG=\"Activity\" -fvisibility=hidden
 LOCAL_SHARED_LIBRARIES := liblog libcutils libdl

@@ -190,7 +190,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensor & activity_recognition HAL
 PRODUCT_PACKAGES += \
-    sensors.libra \
+    sensors.iio-lsm6db0 \
     activity_recognition.libra
 
 # Build stlport for legacy blobs
