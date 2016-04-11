@@ -1,0 +1,44 @@
+# STMicroelectronics LSM6DB0 IIO Sensors
+ro.hardware.sensors=iio-lsm6db0
+
+# Accelerometer
+ro.iio.accel.name=LSM6DB0 Accelerometer Sensor
+ro.iio.accel.vendor=STMicroelectronics
+ro.iio.accel.max_range=39.190529
+ro.iio.accel.resolution=0.001196
+ro.iio.accel.power=1.0
+
+# Magnetometer
+ro.iio.magn.name=LSM6DB0 Magnetometer Sensor
+ro.iio.magn.vendor=STMicroelectronics
+ro.iio.magn.max_range=1966.080078
+ro.iio.magn.resolution=0.06
+ro.iio.magn.power=1.0
+
+# Gyroscope
+ro.iio.anglvel.name=LSM6DB0 Gyroscope Sensor
+ro.iio.anglvel.vendor=STMicroelectronics
+ro.iio.anglvel.max_range=40.009727
+ro.iio.anglvel.resolution=0.001221
+ro.iio.anglvel.power=1.0
+
+# Rotation
+ro.iio.incli.name=LSM6DB0 iNemoEngine Rotation Vector Sensor
+ro.iio.incli.vendor=STMicroelectronics
+ro.iio.incli.max_range=1.0
+ro.iio.incli.resolution=1.0
+ro.iio.incli.power=1.0
+
+# ALS
+ro.iio.illuminance.name=Ambient Light Sensor
+ro.iio.illuminance.vendor=Capella
+ro.iio.illuminance.max_range=30000.0
+ro.iio.illuminance.resolution=1.0
+ro.iio.illuminance.power=0.1
+
+# Proximity
+ro.iio.proximity.name=Proximity Sensor
+ro.iio.proximity.vendor=Capella
+ro.iio.proximity.max_range=1.0
+ro.iio.proximity.resolution=1.0
+ro.iio.proximity.power=0.1
