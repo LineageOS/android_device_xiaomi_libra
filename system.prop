@@ -23,11 +23,32 @@ ro.iio.anglvel.resolution=0.001221
 ro.iio.anglvel.power=1.0
 
 # Rotation
-ro.iio.incli.name=LSM6DB0 iNemoEngine Rotation Vector Sensor
-ro.iio.incli.vendor=STMicroelectronics
-ro.iio.incli.max_range=1.0
-ro.iio.incli.resolution=1.0
-ro.iio.incli.power=1.0
+ro.iio.quat.name=LSM6DB0 iNemoEngine Rotation Vector Sensor
+ro.iio.quat.vendor=STMicroelectronics
+ro.iio.quat.max_range=1.0
+ro.iio.quat.resolution=1.0
+ro.iio.quat.power=1.0
+
+# Orientation
+ro.iio.euler.name=LSM6DB0 iNemoEngine Orientation Sensor
+ro.iio.euler.vendor=STMicroelectronics
+ro.iio.euler.max_range=360.0
+ro.iio.euler.resolution=0.000021
+ro.iio.euler.power=1.0
+
+# Step Detector
+ro.iio.step_d.name=LSM6DB0 Step Detector Sensor
+ro.iio.step_d.vendor=STMicroelectronics
+ro.iio.step_d.max_range=1.0
+ro.iio.step_d.resolution=1.0
+ro.iio.step_d.power=1.0
+
+# Step Counter
+ro.iio.step_c.name=LSM6DB0 Step Counter Sensor
+ro.iio.step_c.vendor=STMicroelectronics
+ro.iio.step_c.max_range=65535.0
+ro.iio.step_c.resolution=1.0
+ro.iio.step_c.power=1.0
 
 # ALS
 ro.iio.illuminance.name=Ambient Light Sensor
