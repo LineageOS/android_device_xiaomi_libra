@@ -101,6 +101,7 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_GENERIC_CHANNEL("illuminance") },
 		},
 	},
+#if 0
 	{
 		.tag		= "euler",
 		.shorthand	= "",
@@ -126,6 +127,7 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_NAMED_CHANNEL("quaternion", "module") },
 		},
 	},
+#endif
 	{
 		.tag		= "temp",
 		.shorthand	= "",
@@ -146,7 +148,6 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_GENERIC_CHANNEL("proximity") },
 		},
 	},
-#if 0
 	{
 		.tag		= "",
 		.shorthand	= "",
@@ -168,7 +169,6 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_GENERIC_CHANNEL("") },
 		},
 	},
-#endif
 	{
 		.tag		= "step_c",
 		.shorthand	= "",
