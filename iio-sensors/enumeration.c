@@ -102,28 +102,28 @@ sensor_catalog_entry_t sensor_catalog[] = {
 		},
 	},
 	{
-		.tag		= "incli",
+		.tag		= "euler",
 		.shorthand	= "",
 		.type		= SENSOR_TYPE_ORIENTATION,
 		.num_channels	= 3,
 		.is_virtual	= 0,
 		.channel = {
-			{ DECLARE_NAMED_CHANNEL("incli", "x") },
-			{ DECLARE_NAMED_CHANNEL("incli", "y") },
-			{ DECLARE_NAMED_CHANNEL("incli", "z") },
+			{ DECLARE_NAMED_CHANNEL("euler", "x") },
+			{ DECLARE_NAMED_CHANNEL("euler", "y") },
+			{ DECLARE_NAMED_CHANNEL("euler", "z") },
 		},
 	},
 	{
-		.tag		= "rot",
+		.tag		= "quat",
 		.shorthand	= "",
 		.type		= SENSOR_TYPE_ROTATION_VECTOR,
 		.num_channels	= 4,
 		.is_virtual	= 0,
 		.channel = {
-			{ DECLARE_NAMED_CHANNEL("rot", "quat_x") },
-			{ DECLARE_NAMED_CHANNEL("rot", "quat_y") },
-			{ DECLARE_NAMED_CHANNEL("rot", "quat_z") },
-			{ DECLARE_NAMED_CHANNEL("rot", "quat_w") },
+			{ DECLARE_NAMED_CHANNEL("quaternion", "x") },
+			{ DECLARE_NAMED_CHANNEL("quaternion", "y") },
+			{ DECLARE_NAMED_CHANNEL("quaternion", "z") },
+			{ DECLARE_NAMED_CHANNEL("quaternion", "module") },
 		},
 	},
 	{
@@ -146,6 +146,7 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_GENERIC_CHANNEL("proximity") },
 		},
 	},
+#if 0
 	{
 		.tag		= "",
 		.shorthand	= "",
@@ -167,28 +168,29 @@ sensor_catalog_entry_t sensor_catalog[] = {
 			{ DECLARE_GENERIC_CHANNEL("") },
 		},
 	},
+#endif
 	{
-		.tag		= "steps",
+		.tag		= "step_c",
 		.shorthand	= "",
 		.type		= SENSOR_TYPE_STEP_COUNTER,
 		.num_channels	= 1,
 		.is_virtual	= 0,
 		.channel = {
-			{ DECLARE_GENERIC_CHANNEL("steps") },
+			{ DECLARE_GENERIC_CHANNEL("step_counter") },
 		},
 	},
 	{
-		.tag		= "steps",
+		.tag		= "step_d",
 		.shorthand	= "",
 		.type		= SENSOR_TYPE_STEP_DETECTOR,
 		.num_channels	= 1,
 		.is_virtual	= 0,
 		.channel = {
 			{
-				DECLARE_VOID_CHANNEL("steps")
+				DECLARE_VOID_CHANNEL("step_detector")
 				.num_events = 1,
 				.event = {
-					{ DECLARE_NAMED_EVENT("steps", "change") },
+					{ DECLARE_EVENT("step_detector", "_", "thresh", "_", "rising", "", "") },
 				},
 			},
 		},
