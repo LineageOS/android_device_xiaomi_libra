@@ -1,5 +1,5 @@
 # STMicroelectronics LSM6DB0 IIO Sensors
-ro.hardware.sensors=iio-lsm6db0
+ro.hardware.sensors=lsm6db0
 
 # Accelerometer
 ro.iio.accel.name=LSM6DB0 Accelerometer Sensor
