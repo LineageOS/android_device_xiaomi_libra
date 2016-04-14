@@ -653,3 +653,6 @@ vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_sensor_debug.so
 vendor/lib64/libmmcamera2_stats_algorithm.so
 vendor/lib64/libsensor1.so
+
+lib/libsensorservice.so
+lib64/libsensorservice.so
