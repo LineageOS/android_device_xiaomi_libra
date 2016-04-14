@@ -496,40 +496,40 @@
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-0008/lsm6db0_activity.0/iio:device* scan_elements/in_timestamp_en 0660 system system
 
 #PL sensor
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* buffer/enable 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* buffer/length 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_in_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_custom_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_proximity_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_timestamp_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_illuminance_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* in_illuminance_scale 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* in_proximity_offset 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* continus_mode 0600 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* buffer/enable 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* buffer/length 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_in_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_custom_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_proximity_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_timestamp_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* scan_elements/in_illuminance_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* in_illuminance_scale 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* in_proximity_offset 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* continus_mode 0660 system system
 /sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* calibration_offset 0660 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* prox_thres_near 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* prox_thres_far 0600 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* prox_thres_near 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0060/iio:device* prox_thres_far 0660 system system
 
 #pressure sensor
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* buffer/enable 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* buffer/length 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* scan_elements/in_pressure_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* scan_elements/in_timestamp_en 0600 system system
-/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* in_pressure_scale 0600 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* buffer/enable 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* buffer/length 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* scan_elements/in_pressure_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* scan_elements/in_timestamp_en 0660 system system
+/sys/devices/soc.0/f9963000.i2c/i2c-7/7-0077/iio:device* in_pressure_scale 0660 system system
 
 #for x7 sensorhub
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* debug_reg_dump 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* out_command 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* in_data 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* misc_bin_dmp_firmware 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* misc_reset 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* name 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* buffer/enable 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* buffer/length 0600 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* debug_reg_dump 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* out_command 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* in_data 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* misc_bin_dmp_firmware 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* misc_reset 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* name 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* buffer/enable 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* buffer/length 0660 system system
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* scan_elements/in_accel_type 0440 system system
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* scan_elements/in_accel_index 0440 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* scan_elements/in_accel_en 0600 system system
-/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* trigger/current_trigger 0600 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* scan_elements/in_accel_en 0660 system system
+/sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* trigger/current_trigger 0660 system system
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* in_accel_matrix 0440 system system
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* in_magn_matrix 0440 system system
 /sys/devices/soc.0/f9927000.i2c/i2c-13/13-006b/iio:device* in_anglvel_matrix 0440 system system
