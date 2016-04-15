@@ -1,3 +1,0 @@
-# STMicroelectronics LSM6DB0 IIO Sensors
-ro.hardware.sensors=lsm6db0
-ro.sensors.force_delay_mode=true

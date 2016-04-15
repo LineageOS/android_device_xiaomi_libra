@@ -190,8 +190,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensor & activity_recognition HAL
 PRODUCT_PACKAGES += \
-    sensors.iio-lsm6db0 \
+    sensors.msm8992 \
     activity_recognition.libra
+
+# Multi HAL configuration file
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/hals.conf:system/etc/sensors/hals.conf
 
 # Build stlport for legacy blobs
 PRODUCT_PACKAGES += \
