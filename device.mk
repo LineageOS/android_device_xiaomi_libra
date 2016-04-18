@@ -298,6 +298,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=1 \
     persist.radio.mode_pref_nv10=1
 
+# Multi SIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.multisim.config=dsds
+
 # Emergency call overrides for Korea
 PRODUCT_PROPERTY_OVERRIDES += \
     ril.nosim.ecc_list_count=1 \
