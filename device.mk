@@ -160,7 +160,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     librmnetctl \
-    rmnetcli
+    rmnetcli \
+    libxml2
 
 # GPS configuration
 PRODUCT_COPY_FILES += \

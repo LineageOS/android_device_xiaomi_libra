@@ -142,6 +142,9 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+    #Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
+
     # Subsytem Restart
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
@@ -257,6 +260,11 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system
+
+service rfs_access /system/bin/rfs_access
+   class core
+   user system
+   group system net_raw
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
