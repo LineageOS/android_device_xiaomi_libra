@@ -302,6 +302,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds
 
+# RIL subscription types
+PRODUCT_PROPERTY_OVERRIDES += \
+    ril.subscription.types=RUIM
+
+# Enable manual network selection function and distinguish 2G/3G/4G
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.rat_on=combine
+
 # Emergency call overrides for Korea
 PRODUCT_PROPERTY_OVERRIDES += \
     ril.nosim.ecc_list_count=1 \
