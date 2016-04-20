@@ -173,7 +173,9 @@ PRODUCT_PACKAGES += \
     hostapd \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    libqminvapi \
+    xiaomi_hwaddrs
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -373,7 +375,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.enable_timeout_ms=12000
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.bt.bdaddr_path=/persist/bdaddr.txt
+    ro.bt.bdaddr_path=/data/misc/bluetooth/bdaddr.txt
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \

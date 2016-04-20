@@ -493,3 +493,15 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
+service xiaomi_hwaddrs /system/bin/xiaomi_hwaddrs
+    class core
+    user root
+    group system wifi
+    oneshot
+
+# Running hwaddrs under init is enforcing 0600, we need more
+on property:init.svc.xiaomi_hwaddrs=stopped
+    chmod 644 /data/misc/wifi/wlan_mac.bin
+    chown system wifi /data/misc/wifi/wlan_mac.bin
+    chmod 644 /data/misc/bluetooth/bdaddr.txt
+    chown bluetooth bluetooth /data/misc/bluetooth/bdaddr.txt
