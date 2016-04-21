@@ -20,10 +20,10 @@ extern int qmi_nv_read_wlan_mac(unsigned char** mac);
 extern int qmi_nv_read_bd_addr(unsigned char** addr);
 
 int main() {
-    unsigned char *buf = NULL;
-    int i = qmi_nv_read_wlan_mac(&buf);
+    unsigned char *buf = NULL; int i = -1;
     FILE *f = fopen("/data/misc/wifi/wlan_mac.bin", "w");
     if (f != NULL) {
+        i = qmi_nv_read_wlan_mac(&buf);
         if (i == 0) {
             fprintf(f, "Intf0MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\nEND\n",
                     buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
@@ -36,9 +36,9 @@ int main() {
     }
 
     buf = NULL, i = -1;
-    i = qmi_nv_read_bd_addr(&buf);
     f = fopen("/data/misc/bluetooth/bdaddr.txt", "w");
     if (f != NULL) {
+        i = qmi_nv_read_bd_addr(&buf);
         if (i == 0) {
             fprintf(f, "%02hhx:%02hhx:%02hhx:%02hhx:%02hhx:%02hhx\n",
                     buf[5], buf[4], buf[3], buf[2], buf[1], buf[0]);
