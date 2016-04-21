@@ -19,23 +19,23 @@
 <device name="Android">
     <!-- All values are in mAh except as noted -->
     <item name="none">0</item>
-    <item name="screen.on">140.9</item>
-    <item name="screen.full">288.49</item>
-    <item name="bluetooth.active">331.97</item>
-    <item name="bluetooth.on">0.48</item>
-    <item name="wifi.on">0.45</item>
-    <item name="wifi.active">323.22</item>
-    <item name="wifi.scan">179.43</item>
-    <item name="dsp.audio">123.49</item>
-    <item name="dsp.video">501.78</item>
-    <item name="gps.on">0.1</item>
-    <item name="radio.active">0.1</item>
+    <item name="screen.on">91.82</item>
+    <item name="screen.full">313.05</item>
+    <item name="bluetooth.active">84.4</item>
+    <item name="bluetooth.on">0.43</item>
+    <item name="wifi.on">0.56</item>
+    <item name="wifi.active">172.99</item>
+    <item name="wifi.scan">2.13</item>
+    <item name="dsp.audio">100.88</item>
+    <item name="dsp.video">187.86</item>
+    <item name="gps.on">59.74</item>
+    <item name="radio.active">185.19</item>
     <!-- The current consumed by the radio when it is scanning for a signal -->
-    <item name="radio.scanning">315.8</item>
+    <item name="radio.scanning">99.2</item>
     <!-- Current consumed by the radio at different signal strengths, when paging -->
     <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
-        <value>10.14</value>
-        <value>10.14</value>
+        <value>4.8</value>
+        <value>1.11</value>
     </array>
     <!-- Different CPU speeds as reported in
          /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state -->
@@ -103,10 +103,10 @@
     <item name="battery.capacity">3080</item>
 
     <array name="wifi.batchedscan"> <!-- mA.  Current figures based on .0801 s/c and 75.48mA while scanning -->
-        <value>.0002</value> <!-- 1-8/hr -->
-        <value>.002</value>  <!-- 9-64/hr -->
-        <value>.02</value>   <!-- 65-512/hr -->
-        <value>.2</value>    <!-- 513-4096/hr -->
-        <value>2</value>     <!-- 4097-?/hr -->
+        <value>.0076</value> <!-- 1-8/hr -->
+        <value>.0613</value>  <!-- 9-64/hr -->
+        <value>.4845</value>   <!-- 65-512/hr -->
+        <value>3.870</value>    <!-- 513-4096/hr -->
+        <value>30.96</value>   <!-- 4097-?/hr -->
     </array>
 </device>
