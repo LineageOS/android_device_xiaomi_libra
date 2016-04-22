@@ -114,6 +114,7 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
 # RIL
 TARGET_RIL_VARIANT := caf
+BOARD_PROVIDES_RILD := true
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
