@@ -136,6 +136,14 @@ static char *camera_fixup_getparams(int id, const char *settings)
         }
     }
 
+    if (id == 0) { // back camera
+        params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
+            "1920x1080,1280x960,1280x720,720x480,640x480,320x240");
+    } else if (id == 1) { // front camera
+        params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
+            "1280x960,1280x720,720x480,640x480,576x432,320x240");
+    }
+
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
