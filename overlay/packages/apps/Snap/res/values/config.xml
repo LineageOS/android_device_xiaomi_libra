@@ -20,5 +20,8 @@
 
     <!-- Restart preview for front camera onPictureTaken -->
     <bool name="front_camera_restart_preview_onPictureTaken">true</bool>
+
+    <!-- Set this to true to use device manufacturer and model for exif -->
+    <bool name="override_maker_and_model_tag">true</bool>
 </resources>
 
