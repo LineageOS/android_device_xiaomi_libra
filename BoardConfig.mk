@@ -175,7 +175,7 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/class/input/input1/wake_gesture"
 
 # CM Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS += device/xiaomi/libra/cmhw
 
 # Disable Jack & Jill compilation
 ANDROID_COMPILE_WITH_JACK := false
