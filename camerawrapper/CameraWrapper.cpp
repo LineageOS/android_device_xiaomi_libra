@@ -116,32 +116,22 @@ static char *camera_fixup_getparams(int id, const char *settings)
     params.dump();
 #endif
 
-    params.set("longshot-supported", "false");
-
-    const char *manualFocusPosition = params.get("manual-focus-position");
-    const char *manualFocusPositionType = params.get("manual-focus-pos-type");
-    if (manualFocusPositionType != NULL) {
-        if (!strcmp(manualFocusPositionType, "2")) {
-            if (manualFocusPosition != NULL) {
-                params.set("cur-focus-scale", manualFocusPosition);
-            } else {
-                params.set("cur-focus-scale", "0");
-            }
-        } else if (!strcmp(manualFocusPositionType, "3")) {
-            if (manualFocusPosition != NULL) {
-                params.set("cur-focus-diopter", manualFocusPosition);
-            } else {
-                params.set("cur-focus-diopter", "0");
-            }
-        }
-    }
-
     if (id == 0) { // back camera
         params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-            "1920x1080,1280x960,1280x720,720x480,640x480,320x240");
+            "1920x1080,1280x960,1280x720,720x480,640x480,576x432,320x240");
+        params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
+            "1920x1080");
+        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
+            "4096x2160,3840x2160,1920x1080,1280x720,864x480,800x480,720x480,640x480,320x240,176x144");
+        params.set("supported-live-snapshot-sizes",
+            "3200x2400,2592x1944,2048x1536,1920x1080,1600x1200,1280x768,1280x720,1024x768,800x600,864x480,800x480,720x480,640x480,320x240");
     } else if (id == 1) { // front camera
         params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-            "1280x960,1280x720,720x480,640x480,576x432,320x240");
+            "1920x1080,1280x960,1280x720,720x480,640x480,576x432,320x240");
+        params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
+            "1920x1080");
+        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
+            "1920x1080,1280x720,864x480,800x480,720x480,640x480,320x240,176x144");
     }
 
 #if !LOG_NDEBUG
