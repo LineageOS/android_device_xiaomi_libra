@@ -29,7 +29,7 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/sys/class/input/input1/0dbutton";
+    private static String CONTROL_PATH = "/proc/synaptics_dsx/0dbutton";
 
     public static boolean isSupported() { return true; }
 

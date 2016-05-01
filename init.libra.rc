@@ -208,14 +208,14 @@ on boot
     chmod 0660 /sys/class/leds/rgb/rgb_blink
 
     # Touchscreen
-    chown root system /sys/class/input/input1/wake_gesture
-    chmod 0660 /sys/class/input/input1/wake_gesture
+    chown root system /proc/synaptics_dsx/wake_gesture
+    chmod 0660 /proc/synaptics_dsx/wake_gesture
     chown root system /sys/class/input/input1/edge_mode
     chmod 0660 /sys/class/input/input1/edge_mode
 
     # Key disabler
-    chown root system /sys/class/input/input1/0dbutton
-    chmod 0660 /sys/class/input/input1/0dbutton
+    chown root system /proc/synaptics_dsx/0dbutton
+    chmod 0660 /proc/synaptics_dsx/0dbutton
 
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/vtg_level

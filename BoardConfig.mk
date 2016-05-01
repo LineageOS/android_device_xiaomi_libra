@@ -171,7 +171,7 @@ TARGET_PER_MGR_ENABLED := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Double tap to wake
-TARGET_TAP_TO_WAKE_NODE := "/sys/class/input/input1/wake_gesture"
+TARGET_TAP_TO_WAKE_NODE := "/proc/synaptics_dsx/wake_gesture"
 
 # CM Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
