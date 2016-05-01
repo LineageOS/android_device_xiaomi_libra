@@ -11,3 +11,6 @@ allow radio persist_file:dir search;
 
 # Connect to ims service.
 #HACK allow radio ims:unix_stream_socket connectto;
+
+allow radio sysfs_ssr:dir { read search open };
+allow radio sysfs_ssr:lnk_file read;

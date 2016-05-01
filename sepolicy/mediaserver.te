@@ -13,3 +13,5 @@ allow mediaserver perfd:unix_stream_socket connectto;
 allow mediaserver sensorservice_service:service_manager find;
 binder_call(mediaserver, servicemanager);
 binder_call(mediaserver, sensorservice_service);
+
+allow mediaserver init:unix_dgram_socket sendto;

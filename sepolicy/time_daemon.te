@@ -16,3 +16,6 @@ allow time_daemon smem_log_device:chr_file rw_file_perms;
 
 allow time_daemon rtc_device:chr_file r_file_perms;
 allow time_daemon alarm_device:chr_file w_file_perms;
+
+allow time_daemon sysfs_ssr:dir { read search open };
+allow time_daemon sysfs_ssr:lnk_file read;

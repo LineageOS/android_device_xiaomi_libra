@@ -31,3 +31,6 @@ userdebug_or_eng(`
 ')
 
 wakelock_use(cnd)
+
+allow cnd sysfs_ssr:dir { read search open };
+allow cnd sysfs_ssr:lnk_file read;

@@ -62,3 +62,6 @@ allow netmgrd toolbox_exec:file rx_file_perms;
 
 #Allow netmgrd to use wakelock
 wakelock_use(netmgrd)
+
+allow netmgrd socket_device:dir { write add_name };
+allow netmgrd socket_device:sock_file { create setattr };

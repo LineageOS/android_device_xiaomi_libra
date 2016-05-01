@@ -12,3 +12,6 @@ binder_use(imscm)
 allow imscm imscm_service:service_manager add;
 
 binder_service(imscm)
+
+allow imscm sysfs_ssr:dir { read search open };
+allow imscm sysfs_ssr:lnk_file read;

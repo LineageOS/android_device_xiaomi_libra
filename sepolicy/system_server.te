@@ -33,3 +33,8 @@ set_prop(system_server, contexthub_prop);
 # run on big cores for app launch (sched_boost) - instead of just
 # boosting them to make it "more likely" to run on big cores.
 allow system_server zygote:process setsched;
+
+allow system_server netmgrd:unix_stream_socket connectto;
+allow system_server persist_file:dir { read getattr };
+allow system_server persist_file:file { read write getattr open };
+allow system_server socket_device:sock_file write;
