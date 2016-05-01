@@ -162,11 +162,6 @@ static char *camera_fixup_setparams(int id, const char *settings)
         }
     }
 
-    const char *denoise = params.get("denoise");
-    if (denoise != NULL) {
-        params.set("denoise", "denoise-on");
-    }
-
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
