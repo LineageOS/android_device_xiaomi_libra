@@ -105,6 +105,10 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/libra/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
     device/xiaomi/libra/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 
+# Thermal engine
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/thermal-engine-8992.conf:system/etc/thermal-engine-8992.conf
+
 # Power configuration file
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/init.libra.power.sh:system/bin/init.libra.power.sh

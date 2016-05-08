@@ -80,7 +80,6 @@ etc/permissions/rcsservice.xml
 etc/qcril.db
 etc/sap.conf
 etc/sysconfig/whitelist_com.android.omadm.service.xml
-etc/thermal-engine-8992.conf
 lib/hw/consumerir.msm8992.so
 lib/hw/gps.msm8992.so
 lib/hw/local_time.default.so
