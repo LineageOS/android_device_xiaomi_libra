@@ -112,6 +112,10 @@ HAVE_ADRENO_SOURCE:= false
 
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_RILD := true
+
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
