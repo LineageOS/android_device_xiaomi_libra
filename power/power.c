@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2014, The CyanogenMod Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -37,16 +38,18 @@
 #include <dlfcn.h>
 #include <stdlib.h>
 
-#define LOG_TAG "QCOMPowerHAL"
+#define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
+#include <pthread.h>
 
 #include "utils.h"
 #include "metadata-defs.h"
 #include "hint-data.h"
 #include "performance.h"
 #include "power-common.h"
+#include "power-feature.h"
 
 static int saved_dcvs_cpu0_slack_max = -1;
 static int saved_dcvs_cpu0_slack_min = -1;
@@ -61,7 +64,9 @@ static struct hw_module_methods_t power_module_methods = {
     .open = NULL,
 };
 
-static void power_init(struct power_module *module)
+static pthread_mutex_t hint_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+static void power_init(__attribute__((unused))struct power_module *module)
 {
     ALOGI("QCOM power HAL initing.");
 
@@ -188,103 +193,35 @@ static void process_video_encode_hint(void *metadata)
     }
 }
 
-int __attribute__ ((weak)) power_hint_override(struct power_module *module, power_hint_t hint,
-        void *data)
+int __attribute__ ((weak)) power_hint_override(
+        __attribute__((unused)) struct power_module *module,
+        __attribute__((unused)) power_hint_t hint,
+        __attribute__((unused)) void *data)
 {
     return HINT_NONE;
 }
 
-/* Declare function before use */
-int interaction(int duration, int num_args, int opt_list[]);
-int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
+extern void interaction(int duration, int num_args, int opt_list[]);
 
-static void power_hint(struct power_module *module, power_hint_t hint,
+static void power_hint(__attribute__((unused)) struct power_module *module, power_hint_t hint,
         void *data)
 {
+    pthread_mutex_lock(&hint_mutex);
+
     /* Check if this hint has been overridden. */
     if (power_hint_override(module, hint, data) == HINT_HANDLED) {
         /* The power_hint has been handled. We can skip the rest. */
-        return;
+        goto out;
     }
 
     switch(hint) {
         case POWER_HINT_VSYNC:
-        break;
         case POWER_HINT_INTERACTION:
-        {
-            int duration_hint = 0;
-            static unsigned long long previous_boost_time = 0;
-
-            // little core freq bump for 1.5s
-            int resources[] = {0x20C};
-            int duration = 1500;
-            static int handle_little = 0;
-
-            // big core freq bump for 500ms
-            int resources_big[] = {0x2312, 0x1F08};
-            int duration_big = 500;
-            static int handle_big = 0;
-
-            // sched_downmigrate lowered to 10 for 1s at most
-            // should be half of upmigrate
-            int resources_downmigrate[] = {0x4F00};
-            int duration_downmigrate = 1000;
-            static int handle_downmigrate = 0;
-
-            // sched_upmigrate lowered to at most 20 for 500ms
-            // set threshold based on elapsed time since last boost
-            int resources_upmigrate[] = {0x4E00};
-            int duration_upmigrate = 500;
-            static int handle_upmigrate = 0;
-
-            // set duration hint
-            if (data) {
-                duration_hint = *((int*)data);
-            }
-
-            struct timeval cur_boost_timeval = {0, 0};
-            gettimeofday(&cur_boost_timeval, NULL);
-            unsigned long long cur_boost_time = cur_boost_timeval.tv_sec * 1000000 + cur_boost_timeval.tv_usec;
-            double elapsed_time = (double)(cur_boost_time - previous_boost_time);
-            if (elapsed_time > 750000)
-                elapsed_time = 750000;
-            // don't hint if it's been less than 250ms since last boost
-            // also detect if we're doing anything resembling a fling
-            // support additional boosting in case of flings
-            else if (elapsed_time < 250000 && duration_hint <= 750)
-                return;
-
-            // 95: default upmigrate for phone
-            // 20: upmigrate for sporadic touch
-            // 750ms: a completely arbitrary threshold for last touch
-            int upmigrate_value = 95 - (int)(75. * ((elapsed_time*elapsed_time) / (750000.*750000.)));
-
-            // keep sched_upmigrate high when flinging
-            if (duration_hint >= 750)
-                upmigrate_value = 20;
-
-            previous_boost_time = cur_boost_time;
-            resources_upmigrate[0] = resources_upmigrate[0] | upmigrate_value;
-            resources_downmigrate[0] = resources_downmigrate[0] | (upmigrate_value / 2);
-
-            // modify downmigrate duration based on interaction data hint
-            // 1000 <= duration_downmigrate <= 5000
-            // extend little core freq bump past downmigrate to soften downmigrates
-            if (duration_hint > 1000) {
-                if (duration_hint < 5000) {
-                    duration_downmigrate = duration_hint;
-                    duration = duration_hint + 750;
-                } else {
-                    duration_downmigrate = 5000;
-                    duration = 5750;
-                }
-            }
-
-            handle_little = interaction_with_handle(handle_little,duration, sizeof(resources)/sizeof(resources[0]), resources);
-            handle_big = interaction_with_handle(handle_big, duration_big, sizeof(resources_big)/sizeof(resources_big[0]), resources_big);
-            handle_downmigrate = interaction_with_handle(handle_downmigrate, duration_downmigrate, sizeof(resources_downmigrate)/sizeof(resources_downmigrate[0]), resources_downmigrate);
-            handle_upmigrate = interaction_with_handle(handle_upmigrate, duration_upmigrate, sizeof(resources_upmigrate)/sizeof(resources_upmigrate[0]), resources_upmigrate);
-        }
+        case POWER_HINT_CPU_BOOST:
+        case POWER_HINT_LAUNCH_BOOST:
+        case POWER_HINT_AUDIO:
+        case POWER_HINT_SET_PROFILE:
+        case POWER_HINT_LOW_POWER:
         break;
         case POWER_HINT_VIDEO_ENCODE:
             process_video_encode_hint(data);
@@ -292,31 +229,52 @@ static void power_hint(struct power_module *module, power_hint_t hint,
         case POWER_HINT_VIDEO_DECODE:
             process_video_decode_hint(data);
         break;
+        default:
+        break;
     }
+
+out:
+    pthread_mutex_unlock(&hint_mutex);
 }
 
-int __attribute__ ((weak)) set_interactive_override(struct power_module *module, int on)
+int __attribute__ ((weak)) set_interactive_override(
+        __attribute__((unused)) struct power_module *module,
+        __attribute__((unused)) int on)
 {
     return HINT_NONE;
 }
+
+int __attribute__ ((weak)) get_number_of_profiles()
+{
+    return 0;
+}
+
+#ifdef SET_INTERACTIVE_EXT
+extern void cm_power_set_interactive_ext(int on);
+#endif
 
 void set_interactive(struct power_module *module, int on)
 {
     char governor[80];
     char tmp_str[NODE_MAX];
     struct video_encode_metadata_t video_encode_metadata;
-    int rc;
+    int rc = 0;
+
+    pthread_mutex_lock(&hint_mutex);
+
+#ifdef SET_INTERACTIVE_EXT
+    cm_power_set_interactive_ext(on);
+#endif
 
     if (set_interactive_override(module, on) == HINT_HANDLED) {
-        return;
+        goto out;
     }
 
     ALOGI("Got set_interactive hint");
 
     if (get_scaling_governor(governor, sizeof(governor)) == -1) {
         ALOGE("Can't obtain scaling governor.");
-
-        return;
+        goto out;
     }
 
     if (!on) {
@@ -445,7 +403,7 @@ void set_interactive(struct power_module *module, int on)
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             undo_hint_action(DISPLAY_STATE_HINT_ID);
             display_hint_sent = 0;
-        } else if ((strncmp(governor, MSMDCVS_GOVERNOR, strlen(MSMDCVS_GOVERNOR)) == 0) &&
+        } else if ((strncmp(governor, MSMDCVS_GOVERNOR, strlen(MSMDCVS_GOVERNOR)) == 0) && 
                 (strlen(governor) == strlen(MSMDCVS_GOVERNOR))) {
             if (saved_interactive_mode == -1 || saved_interactive_mode == 0) {
                 /* Display turned on. Restore if possible. */
@@ -503,6 +461,9 @@ void set_interactive(struct power_module *module, int on)
     }
 
     saved_interactive_mode = !!on;
+
+out:
+    pthread_mutex_unlock(&hint_mutex);
 }
 
 void set_feature(struct power_module *module, feature_t feature, int state)
@@ -512,8 +473,18 @@ void set_feature(struct power_module *module, feature_t feature, int state)
     if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
         snprintf(tmp_str, NODE_MAX, "%d", state);
         sysfs_write(TAP_TO_WAKE_NODE, tmp_str);
+        return;
     }
 #endif
+    set_device_specific_feature(module, feature, state);
+}
+
+int get_feature(struct power_module *module __unused, feature_t feature)
+{
+    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
+        return get_number_of_profiles();
+    }
+    return -1;
 }
 
 struct power_module HAL_MODULE_INFO_SYM = {
@@ -523,12 +494,13 @@ struct power_module HAL_MODULE_INFO_SYM = {
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
         .name = "QCOM Power HAL",
-        .author = "Qualcomm",
+        .author = "Qualcomm/CyanogenMod",
         .methods = &power_module_methods,
     },
 
     .init = power_init,
     .powerHint = power_hint,
     .setInteractive = set_interactive,
-    .setFeature = set_feature
+    .setFeature = set_feature,
+    .getFeature = get_feature
 };

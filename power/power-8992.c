@@ -35,10 +35,8 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
-#include <pthread.h>
-#include <stdbool.h>
 
-#define LOG_TAG "QCOMPowerHAL"
+#define LOG_TAG "QCOM PowerHAL"
 #include <utils/Log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
@@ -49,51 +47,64 @@
 #include "performance.h"
 #include "power-common.h"
 
-pthread_mutex_t video_encode_lock = PTHREAD_MUTEX_INITIALIZER;
-uintptr_t video_encode_hint_counter = 0;
-bool video_encode_hint_should_enable = false;
-bool video_encode_hint_is_enabled = false;
-
-static int new_hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
-static int cur_hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
-
-static const time_t VIDEO_ENCODE_DELAY_SECONDS = 2;
-static const time_t VIDEO_ENCODE_DELAY_NSECONDS = 0;
-
-static void* video_encode_hint_function(void* arg) {
-    struct timespec tv = {0};
-    tv.tv_sec = VIDEO_ENCODE_DELAY_SECONDS;
-    tv.tv_nsec = VIDEO_ENCODE_DELAY_NSECONDS;
-    int nanosleep_ret = 0;
-    uintptr_t expected_counter = (uintptr_t)arg;
-
-    // delay the hint for two seconds
-    // the hint hotplugs the large CPUs, so this prevents the large CPUs from
-    // going offline until the camera has had time to startup
-    TEMP_FAILURE_RETRY(nanosleep(&tv, &tv));
-    pthread_mutex_lock(&video_encode_lock);
-
-    // check to ensure we should still turn on hint from this particular thread
-    // if should_enable is true but counter is different, another thread owns hint
-    // if should_enable is false, we've already quit the camera
-    if (video_encode_hint_should_enable == true && video_encode_hint_counter == expected_counter) {
-        /* sched and cpufreq params
-           A53: 4 cores online at 1.2GHz max, 960 min
-           A57: 4 cores online at 384 max, 384 min
-        */
-        int resource_values[] = {0x150C, 0x1F03, 0x2303};
-        perform_hint_action(new_hint_id,
-                            resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
-        cur_hint_id = new_hint_id;
-        video_encode_hint_is_enabled = true;
-        video_encode_hint_should_enable = false;
-    }
-
-    pthread_mutex_unlock(&video_encode_lock);
-    return NULL;
-}
+#define ARRAY_SIZE(arr) (sizeof((arr)) / sizeof((arr)[0]))
 
 static int display_hint_sent;
+
+int get_number_of_profiles() {
+    return 5;
+}
+
+static int current_power_profile = PROFILE_BALANCED;
+
+static void set_power_profile(int profile) {
+
+    if (profile == current_power_profile)
+        return;
+
+    ALOGV("%s: profile=%d", __func__, profile);
+
+    if (current_power_profile != PROFILE_BALANCED) {
+        undo_hint_action(DEFAULT_PROFILE_HINT_ID);
+        ALOGV("%s: hint undone", __func__);
+    }
+
+    if (profile == PROFILE_POWER_SAVE) {
+        int resource_values[] = { CPUS_ONLINE_MPD_OVERRIDE, 0x0A03,
+            CPU0_MAX_FREQ_NONTURBO_MAX - 2, CPU1_MAX_FREQ_NONTURBO_MAX - 2,
+            CPU2_MAX_FREQ_NONTURBO_MAX - 2, CPU3_MAX_FREQ_NONTURBO_MAX - 2,
+            CPU4_MAX_FREQ_NONTURBO_MAX - 2, CPU5_MAX_FREQ_NONTURBO_MAX - 2 };
+        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
+            resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+        ALOGD("%s: set powersave", __func__);
+    } else if (profile == PROFILE_HIGH_PERFORMANCE) {
+        int resource_values[] = { SCHED_BOOST_ON, CPUS_ONLINE_MAX, 0x0901, 0x101,
+            CPU0_MIN_FREQ_TURBO_MAX, CPU1_MIN_FREQ_TURBO_MAX,
+            CPU2_MIN_FREQ_TURBO_MAX, CPU3_MIN_FREQ_TURBO_MAX,
+            CPU4_MIN_FREQ_TURBO_MAX, CPU5_MIN_FREQ_TURBO_MAX };
+        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
+            resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+        ALOGD("%s: set performance mode", __func__);
+    } else if (profile == PROFILE_BIAS_POWER) {
+        int resource_values[] = { 0x0A03, 0x0902,
+            CPU0_MAX_FREQ_NONTURBO_MAX - 2, CPU1_MAX_FREQ_NONTURBO_MAX - 2,
+            CPU1_MAX_FREQ_NONTURBO_MAX - 2, CPU2_MAX_FREQ_NONTURBO_MAX - 2,
+            CPU4_MAX_FREQ_NONTURBO_MAX, CPU5_MAX_FREQ_NONTURBO_MAX };
+        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
+            resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+        ALOGD("%s: set bias power mode", __func__);
+    } else if (profile == PROFILE_BIAS_PERFORMANCE) {
+        int resource_values[] = { CPUS_ONLINE_MAX_LIMIT_MAX,
+            CPU4_MIN_FREQ_NONTURBO_MAX + 1, CPU5_MIN_FREQ_NONTURBO_MAX + 1 };
+        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
+            resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
+        ALOGD("%s: set bias perf mode", __func__);
+    }
+
+    current_power_profile = profile;
+}
+
+extern void interaction(int duration, int num_args, int opt_list[]);
 
 static int process_video_encode_hint(void *metadata)
 {
@@ -124,57 +135,111 @@ static int process_video_encode_hint(void *metadata)
     if (video_encode_metadata.state == 1) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            pthread_t video_encode_hint_thread;
-            pthread_mutex_lock(&video_encode_lock);
-            new_hint_id = video_encode_metadata.hint_id;
-            if (video_encode_hint_counter < 65535) {
-                video_encode_hint_counter++;
-            } else {
-                video_encode_hint_counter = 0;
-            }
-            // start new thread to launch hint
-            video_encode_hint_should_enable = true;
-            if (pthread_create(&video_encode_hint_thread, NULL, video_encode_hint_function, (void*)video_encode_hint_counter) != 0) {
-                ALOGE("Error constructing hint thread");
-                video_encode_hint_should_enable = false;
-                pthread_mutex_unlock(&video_encode_lock);
-                return HINT_NONE;
-            }
-            pthread_detach(video_encode_hint_thread);
-            pthread_mutex_unlock(&video_encode_lock);
+            /* sched and cpufreq params
+             * hispeed freq - 768 MHz
+             * target load - 90
+             * above_hispeed_delay - 40ms
+             * sched_small_tsk - 50
+             */
+            int resource_values[] = {0x2C07, 0x2F5A, 0x2704, 0x4032};
 
+            perform_hint_action(video_encode_metadata.hint_id,
+                    resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
             return HINT_HANDLED;
         }
     } else if (video_encode_metadata.state == 0) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            pthread_mutex_lock(&video_encode_lock);
-            video_encode_hint_should_enable = false;
-            if (video_encode_hint_is_enabled == true) {
-                undo_hint_action(cur_hint_id);
-                video_encode_hint_is_enabled = false;
-            }
-            pthread_mutex_unlock(&video_encode_lock);
+            undo_hint_action(video_encode_metadata.hint_id);
             return HINT_HANDLED;
         }
     }
     return HINT_NONE;
 }
 
-int power_hint_override(struct power_module *module, power_hint_t hint, void *data)
+int power_hint_override(__attribute__((unused)) struct power_module *module,
+        power_hint_t hint, void *data)
 {
-    int ret_val = HINT_NONE;
-    switch(hint) {
-        case POWER_HINT_VIDEO_ENCODE:
-            ret_val = process_video_encode_hint(data);
-            break;
-        default:
-            break;
+    if (hint == POWER_HINT_SET_PROFILE) {
+        set_power_profile(*(int32_t *)data);
+        return HINT_HANDLED;
     }
-    return ret_val;
+
+    // Skip other hints in custom power modes
+    if (current_power_profile == PROFILE_POWER_SAVE) {
+        return HINT_HANDLED;
+    }
+
+    if (hint == POWER_HINT_INTERACTION) {
+        int duration = 500, duration_hint = 0;
+        static unsigned long long previous_boost_time = 0;
+
+        if (data) {
+            duration_hint = *((int *)data);
+        }
+
+        duration = duration_hint > 0 ? duration_hint : 500;
+
+        struct timeval cur_boost_timeval = {0, 0};
+        gettimeofday(&cur_boost_timeval, NULL);
+        unsigned long long cur_boost_time = cur_boost_timeval.tv_sec * 1000000 + cur_boost_timeval.tv_usec;
+        double elapsed_time = (double)(cur_boost_time - previous_boost_time);
+        if (elapsed_time > 750000)
+            elapsed_time = 750000;
+        // don't hint if it's been less than 250ms since last boost
+        // also detect if we're doing anything resembling a fling
+        // support additional boosting in case of flings
+        else if (elapsed_time < 250000 && duration <= 750)
+            return HINT_HANDLED;
+
+        previous_boost_time = cur_boost_time;
+
+        if (duration >= 1500) {
+            int resources[] = { SCHED_BOOST_ON, 0x20D, 0x101, 0x3E01 };
+            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+        } else {
+            int resources[] = { 0x20D, 0x101, 0x3E01 };
+            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+        }
+        return HINT_HANDLED;
+    }
+
+    if (hint == POWER_HINT_LAUNCH_BOOST) {
+        launch_boost_info_t *info = (launch_boost_info_t *)data;
+        if (info == NULL) {
+            ALOGE("Invalid argument for launch boost");
+            return HINT_HANDLED;
+        }
+
+        ALOGV("LAUNCH_BOOST: %s (pid=%d)", info->packageName, info->pid);
+
+        int duration = 2000;
+        int resources[] = { SCHED_BOOST_ON, 0x20D };
+
+        start_prefetch(info->pid, info->packageName);
+        interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+
+        return HINT_HANDLED;
+    }
+
+    if (hint == POWER_HINT_CPU_BOOST) {
+        int duration = *(int32_t *)data / 1000;
+        int resources[] = { SCHED_BOOST_ON };
+
+        if (duration > 0)
+            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+
+        return HINT_HANDLED;
+    }
+
+    if (hint == POWER_HINT_VIDEO_ENCODE) {
+        return process_video_encode_hint(data);
+    }
+
+    return HINT_NONE;
 }
 
-int set_interactive_override(struct power_module *module, int on)
+int set_interactive_override(__attribute__((unused)) struct power_module *module, int on)
 {
     char governor[80];
 
@@ -190,7 +255,7 @@ int set_interactive_override(struct power_module *module, int on)
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
             // sched upmigrate = 99, sched downmigrate = 95
             // keep the big cores around, but make them very hard to use
-            int resource_values[] = {0x4E63, 0x4F5F};
+            int resource_values[] = { 0x4E63, 0x4F5F };
             if (!display_hint_sent) {
                 perform_hint_action(DISPLAY_STATE_HINT_ID,
                 resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
