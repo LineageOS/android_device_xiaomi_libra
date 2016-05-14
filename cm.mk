@@ -17,5 +17,5 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=libra \
-    BUILD_FINGERPRINT=Xiaomi/libra/libra:5.1.1/LMY47V/V7.2.3.0.LXKCNDA:user/release-keys \
-    PRIVATE_BUILD_DESC="libra-user 5.1.1 LMY47V V7.2.3.0.LXKCNDA release-keys"
+    BUILD_FINGERPRINT=Xiaomi/libra/libra:5.1.1/LMY47V/V7.3.1.0.LXKCNDD:user/release-keys \
+    PRIVATE_BUILD_DESC="libra-user 5.1.1 LMY47V V7.3.1.0.LXKCNDD release-keys"
