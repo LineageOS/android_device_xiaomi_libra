@@ -650,3 +650,10 @@ vendor/lib64/libsmemlog.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libtime_genoff.so
 vendor/lib64/libxml.so
+
+# Fingerprint blobs for aqua
+bin/fingerprintd
+lib/lib_fpc_tac_shared.so
+lib/hw/fingerprint.libra.so
+lib64/lib_fpc_tac_shared.so
+lib64/hw/fingerprint.libra.so
