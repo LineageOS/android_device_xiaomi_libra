@@ -124,8 +124,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
-PRODUCT_CHARACTERISTICS := nosdcard
-
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images

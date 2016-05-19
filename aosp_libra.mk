@@ -30,6 +30,7 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi-4c
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_CHARACTERISTICS := nosdcard
 
 $(call inherit-product, device/xiaomi/libra/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/libra/device-vendor.mk)
