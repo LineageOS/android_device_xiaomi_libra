@@ -18,7 +18,7 @@ import init.libra.usb.rc
 import init.libra.diag.rc
 import init.libra.ramdump.rc
 import init.libra.misc.rc
-import init.libra.fp.rc
+import init.aqua.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug

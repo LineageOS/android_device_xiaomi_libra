@@ -17,6 +17,7 @@
 package org.cyanogenmod.hardware;
 
 import org.cyanogenmod.hardware.util.FileUtils;
+import java.io.File;
 
 /*
  * Disable capacitive keys
@@ -31,7 +32,9 @@ public class KeyDisabler {
 
     private static String CONTROL_PATH = "/proc/synaptics_dsx/0dbutton";
 
-    public static boolean isSupported() { return true; }
+    public static boolean isSupported() {
+        return new File(CONTROL_PATH).exists();
+    }
 
     public static boolean isActive() {
         return (FileUtils.readOneLine(CONTROL_PATH).equals("0"));
