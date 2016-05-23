@@ -7,4 +7,4 @@ genfscon proc /sys/kernel/sched_freq_inc_notify  u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_freq_dec_notify  u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_small_task       u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_boost            u:object_r:proc_kernel_sched:s0
-genfscon proc /synaptics_dsx                     u:object_r:proc_synaptics_dsx:s0
+genfscon proc /touchscreen                       u:object_r:proc_touchscreen:s0

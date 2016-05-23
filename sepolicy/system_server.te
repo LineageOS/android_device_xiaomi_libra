@@ -34,9 +34,9 @@ set_prop(system_server, contexthub_prop);
 # boosting them to make it "more likely" to run on big cores.
 allow system_server zygote:process setsched;
 
-# For synaptics_dsx proc files
-allow system_server proc_synaptics_dsx:dir search;
-allow system_server proc_synaptics_dsx:file rw_file_perms;
+# For touchscreen proc files
+allow system_server proc_touchscreen:dir search;
+allow system_server proc_touchscreen:file rw_file_perms;
 
 allow system_server netmgrd:unix_stream_socket connectto;
 allow system_server persist_file:dir { read getattr };

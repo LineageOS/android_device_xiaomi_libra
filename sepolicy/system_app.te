@@ -9,6 +9,6 @@ allow system_app cnd_data_file:dir w_dir_perms;
 # allow CNEService to create profile.txt
 allow system_app cnd_data_file:file create_file_perms;
 
-# For synaptics_dsx proc files
-allow system_app proc_synaptics_dsx:dir search;
-allow system_app proc_synaptics_dsx:file rw_file_perms;
+# For touchscreen proc files
+allow system_app proc_touchscreen:dir search;
+allow system_app proc_touchscreen:file rw_file_perms;

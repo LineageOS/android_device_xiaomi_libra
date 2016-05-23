@@ -30,7 +30,7 @@ import java.io.File;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/proc/synaptics_dsx/0dbutton";
+    private static String CONTROL_PATH = "/proc/touchscreen/nav_button_enable";
 
     public static boolean isSupported() {
         return new File(CONTROL_PATH).exists();
