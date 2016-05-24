@@ -47,6 +47,7 @@ on charger
 on property:sys.boot_completed=1
     # allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    write /proc/touchscreen/edge_touch_mode 2
 
 on init
     # Load persistent dm-verity state
@@ -211,8 +212,8 @@ on boot
     # Touchscreen
     chown root system /proc/touchscreen/double_tap_enable
     chmod 0660 /proc/touchscreen/double_tap_enable
-    chown root system /sys/class/input/input1/edge_mode
-    chmod 0660 /sys/class/input/input1/edge_mode
+    chown root system /proc/touchscreen/edge_touch_mode
+    chmod 0660 /proc/touchscreen/edge_touch_mode
 
     # Key disabler
     chown root system /proc/touchscreen/nav_button_enable
