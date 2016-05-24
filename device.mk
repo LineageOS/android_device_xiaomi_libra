@@ -173,6 +173,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/gps.conf:system/etc/gps.conf
 
+# Fingerprint Sensor
+PRODUCT_PACKAGES += \
+    fingerprint.libra
+
 # Wi-Fi
 PRODUCT_PACKAGES += \
     libwpa_client \
