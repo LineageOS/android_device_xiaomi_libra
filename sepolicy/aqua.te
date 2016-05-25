@@ -1,0 +1,9 @@
+type aqua, domain;
+type aqua_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(aqua)
+
+# Write to kmsg and append string to fstab
+allow aqua kmsg_device:chr_file { open write };
+allow aqua rootfs:file { entrypoint append };
