@@ -34,3 +34,6 @@ type ttyHS0_device, dev_type;
 type fingerprint_device, dev_type;
 
 type subsys_modem_device, dev_type;
+
+# Consumer IR
+type lirc_device, dev_type;

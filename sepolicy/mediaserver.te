@@ -15,3 +15,6 @@ binder_call(mediaserver, servicemanager);
 binder_call(mediaserver, sensorservice_service);
 
 allow mediaserver init:unix_dgram_socket sendto;
+
+# For face processing
+allow mediaserver system_file:file execmod;

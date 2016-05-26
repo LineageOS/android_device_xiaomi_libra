@@ -45,3 +45,6 @@ allow system_server netmgrd:unix_stream_socket connectto;
 allow system_server persist_file:dir { read getattr };
 allow system_server persist_file:file { read write getattr open };
 allow system_server socket_device:sock_file write;
+
+# Consumer IR
+allow system_server lirc_device:chr_file rw_file_perms;

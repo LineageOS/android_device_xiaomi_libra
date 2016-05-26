@@ -81,6 +81,9 @@
 /dev/media[0-9]+                       u:object_r:camera_device:s0
 /dev/jpeg[0-9]+                        u:object_r:camera_device:s0
 
+# Consumer IR
+/dev/lirc0                             u:object_r:lirc_device:s0
+
 # System files
 /system/bin/perfd                  u:object_r:perfd_exec:s0
 /system/bin/rmt_storage            u:object_r:rmt_exec:s0
@@ -113,6 +116,8 @@
 /vendor/bin/slim_daemon            u:object_r:location_exec:s0
 /sbin/aqua                         u:object_r:aqua_exec:s0
 /system/bin/fingerprint.sh         u:object_r:fingerprint-sh_exec:s0
+/system/bin/rfs_access             u:object_r:rfs_access_exec:s0
+/system/bin/xiaomi_hwaddrs         u:object_r:xiaomi_hwaddrs_exec:s0
 
 # Sysfs files used by qmuxd
 /sys/devices/virtual/smdpkt/smdcntl([0-9])+/open_timeout u:object_r:sysfs_smdcntl_open_timeout:s0

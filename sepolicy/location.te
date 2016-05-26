@@ -31,6 +31,7 @@ allow location self:capability { setuid setgid net_admin net_raw };
 
 # execute /system/bin/lowi-server and /vendor/bin/slim_daemon
 allow location location_exec:file rx_file_perms;
+allow location system_file:file execute_no_trans;
 
 # slim_daemon receives data from Loc_hal_worker
 allow location self:socket create_socket_perms;

@@ -13,3 +13,6 @@ allow qti self:socket create_socket_perms;
 
 # Allow qti to read and write rmnet_device
 allow qti rmnet_device:chr_file rw_file_perms;
+
+allow qti sysfs_ssr:dir { read search open };
+allow qti sysfs_ssr:lnk_file read;
