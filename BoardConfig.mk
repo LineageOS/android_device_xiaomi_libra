@@ -53,6 +53,11 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_libra
+TARGET_RECOVERY_DEVICE_MODULES := libinit_libra
+TARGET_UNIFIED_DEVICE := true
+
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 BOARD_USES_ALSA_AUDIO := true

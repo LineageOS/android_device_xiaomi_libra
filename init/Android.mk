@@ -33,3 +33,13 @@ LOCAL_CFLAGS := -D__STDC_LIMIT_MACROS -Werror
 LOCAL_STATIC_LIBRARIES := libstdc++ libcutils libc
 
 include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall
+LOCAL_SRC_FILES := init_libra.cpp
+LOCAL_MODULE := libinit_libra
+
+include $(BUILD_STATIC_LIBRARY)

@@ -27,10 +27,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_NAME := aosp_libra
 PRODUCT_DEVICE := libra
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi-4c
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_RESTRICT_VENDOR_FILES := true
-PRODUCT_CHARACTERISTICS := nosdcard
 
 $(call inherit-product, device/xiaomi/libra/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/libra/device-vendor.mk)
