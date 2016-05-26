@@ -1,0 +1,10 @@
+type fingerprint-sh, domain;
+type fingerprint-sh_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(fingerprint-sh)
+
+allow fingerprint-sh system_prop:property_service set;
+allow fingerprint-sh init:unix_stream_socket connectto;
+allow fingerprint-sh property_socket:sock_file write;
+allow fingerprint-sh shell_exec:file read;

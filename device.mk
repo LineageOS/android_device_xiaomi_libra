@@ -21,6 +21,7 @@
 
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/init.libra.rc:root/init.libra.rc \
+    device/xiaomi/libra/init.aqua.rc:root/init.aqua.rc \
     device/xiaomi/libra/init.recovery.libra.rc:root/init.recovery.libra.rc \
     device/xiaomi/libra/init.libra.usb.rc:root/init.libra.usb.rc \
     device/xiaomi/libra/fstab.libra:root/fstab.libra \
@@ -88,6 +89,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
@@ -117,6 +119,10 @@ PRODUCT_COPY_FILES += \
 # MBN
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/init.libra.sh:system/bin/init.libra.sh
+
+# Fingerprint disabler
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/fingerprint.sh:system/bin/fingerprint.sh
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
