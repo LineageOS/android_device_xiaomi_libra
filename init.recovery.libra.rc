@@ -16,4 +16,4 @@
 
 on init
     # Update fstab for aqua
-    exec u:r:aqua:s0 root root -- /sbin/aqua -r
+    exec u:r:aqua:s0 root root -- /sbin/aqua -u

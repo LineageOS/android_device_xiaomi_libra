@@ -26,9 +26,13 @@
 
 #include <functional>
 
+static const char *aqua_line =
+    "/devices/soc.0/f98a4900.sdhci/mmc_host*                             "
+    "auto         auto    defaults    "
+    "voldmanaged=sdcard1:auto,encryptable=userdata\n";
+
 static int get_variant()
 {
-    int i = -1;
     char buf[6];
 
     FILE *f = fopen("/sys/bootinfo/hw_version", "r");
@@ -36,58 +40,47 @@ static int get_variant()
         fscanf(f, "%s", buf);
         fclose(f);
     } else {
-        return i;
+        return -1;
     }
 
     if (strstr(buf, "0x23")) {
-        i = 0;
-        /* KLOG_ERROR(LOG_TAG, "This is libra variant, hw_version: %s\n", buf); */
+        return 0;
     } else /* if (strstr(buf, "0x34")) */ {
-        i = 1;
-        /* KLOG_ERROR(LOG_TAG, "This is aqua variant, hw_version: %s\n", buf); */
+        return 1;
     }
 
-    return i;
+    return -1;
 }
 
-static int update_fstab(const char *fstab)
+static void update_fstab(const char *fstab, const char *line)
 {
-    int i = 0;
-
-    if (get_variant() <= 0) {
-        KLOG_ERROR(LOG_TAG, "Only aqua variant need fstab update\n");
-        return i;
-    }
-
     FILE *f = fopen(fstab, "a");
     if (f != NULL) {
-        fprintf(f, "/devices/soc.0/f98a4900.sdhci/mmc_host*"
-            "                             auto         auto"
-            "    defaults    voldmanaged=sdcard1:auto,encryptable=userdata\n");
-        i = 1;
+        fprintf(f, line);
         fclose(f);
+        KLOG_ERROR(LOG_TAG, "Update %s successfully\n", fstab);
     } else {
         KLOG_ERROR(LOG_TAG, "Update %s failed\n", fstab);
     }
-
-    return i;
 }
 
 int main(int argc, char **argv)
 {
     int i = -1, ch;
 
-    while ((ch = getopt(argc, argv, "vnr")) != -1) {
+    while ((ch = getopt(argc, argv, "vu")) != -1) {
         switch (ch) {
         case 'v': /* variant */
             i = get_variant();
             break;
-        case 'n': /* normal boot */
-            i = update_fstab("/fstab.libra");
-            break;
-        case 'r': /* recovery */
-            i = update_fstab("/fstab.libra");
-            i += update_fstab("/etc/recovery.fstab");
+        case 'u': /* update */
+            i = get_variant();
+            if (i == 1) {
+                update_fstab("/fstab.libra", aqua_line);
+                update_fstab("/etc/recovery.fstab", aqua_line);
+            } else {
+                KLOG_ERROR(LOG_TAG, "Only aqua variant need fstab update\n");
+            }
             break;
         case '?':
         default:

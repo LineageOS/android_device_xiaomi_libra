@@ -73,7 +73,7 @@ on init
     export LD_SHIM_LIBS /system/lib/libmmcamera_interface.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_sensor_modules.so|libshim_camera.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_camera.so
 
     # Update rootfs based on variant
-    exec u:r:aqua:s0 root root -- /sbin/aqua -n
+    exec u:r:aqua:s0 root root -- /sbin/aqua -u
 
 on fs
     mount_all ./fstab.libra

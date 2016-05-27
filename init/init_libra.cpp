@@ -91,7 +91,6 @@ static void init_alarm_boot_properties()
 
 static int get_variant()
 {
-    int i = -1;
     char buf[6];
 
     FILE *f = fopen("/sys/bootinfo/hw_version", "r");
@@ -99,16 +98,16 @@ static int get_variant()
         fscanf(f, "%s", buf);
         fclose(f);
     } else {
-        return i;
+        return -1;
     }
 
     if (strstr(buf, "0x23")) {
-        i = 0;
+        return 0;
     } else /* if (strstr(buf, "0x34")) */ {
-        i = 1;
+        return 1;
     }
 
-    return i;
+    return -1;
 }
 
 static void init_target_properties()
