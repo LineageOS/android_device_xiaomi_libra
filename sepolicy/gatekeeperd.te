@@ -1,0 +1,3 @@
+# read firmware
+allow gatekeeperd firmware_file:dir search;
+allow gatekeeperd firmware_file:file read;

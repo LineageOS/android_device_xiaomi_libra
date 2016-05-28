@@ -8,3 +8,7 @@ set_prop(bluetooth, wc_transport_prop)
 # read /persist/bdaddr.txt
 allow bluetooth persist_file:dir search;
 allow bluetooth persist_file:file r_file_perms;
+
+# read firmware
+allow bluetooth bt_firmware_file:dir search;
+allow bluetooth bt_firmware_file:file { read open getattr };

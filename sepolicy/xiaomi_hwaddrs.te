@@ -5,11 +5,13 @@ type xiaomi_hwaddrs_exec, exec_type, file_type;
 init_daemon_domain(xiaomi_hwaddrs)
 
 allow xiaomi_hwaddrs qmux:unix_stream_socket connectto;
-allow xiaomi_hwaddrs qmuxd_socket:dir { write add_name };
+allow xiaomi_hwaddrs qmuxd_socket:dir { search write add_name };
 allow xiaomi_hwaddrs qmuxd_socket:sock_file { create setattr write };
 allow xiaomi_hwaddrs self:capability { fsetid dac_override };
 allow xiaomi_hwaddrs self:socket { read write create ioctl };
+allow xiaomi_hwaddrs bluetooth_data_file:dir search;
 allow xiaomi_hwaddrs bluetooth_data_file:file { write getattr open };
+allow xiaomi_hwaddrs wifi_data_file:dir search;
 allow xiaomi_hwaddrs wifi_data_file:file { write getattr open };
 
 allow xiaomi_hwaddrs sysfs_ssr:dir { read search open };

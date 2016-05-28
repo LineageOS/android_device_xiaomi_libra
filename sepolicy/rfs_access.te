@@ -6,6 +6,6 @@ init_daemon_domain(rfs_access)
 
 allow rfs_access self:socket { read bind create ioctl };
 allow rfs_access uio_device:chr_file { read open write };
-allow rfs_access persist_file:dir setattr;
+allow rfs_access persist_file:dir { search setattr };
 allow rfs_access self:capability net_raw;
 
