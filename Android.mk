@@ -76,7 +76,8 @@ $(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Keymaster firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@; \
+		ln -sf /firmware/image/$(notdir $@) $(basename $@)r$(suffix $@)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
 
@@ -131,6 +132,18 @@ $(MISC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MISC_SYMLINKS)
+
+WV_IMAGES := \
+    widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt
+
+WV_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(WV_IMAGES)))
+$(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Widevine firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/vendor/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WV_SYMLINKS)
 
 # Read WiFi MAC Address from persist partition
 $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld ; \
