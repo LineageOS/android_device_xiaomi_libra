@@ -76,7 +76,7 @@ on init
 
 on fs
     mount_all ./fstab.libra
-    swapon_all ./fstab.libra
+    # swapon_all ./fstab.libra
 
     restorecon_recursive /persist
 
