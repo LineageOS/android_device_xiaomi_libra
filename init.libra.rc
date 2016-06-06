@@ -47,7 +47,7 @@ on charger
 on property:sys.boot_completed=1
     # allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
-    write /proc/touchscreen/edge_touch_mode 2
+    # write /proc/touchscreen/edge_touch_mode 2
 
 on init
     # Load persistent dm-verity state
