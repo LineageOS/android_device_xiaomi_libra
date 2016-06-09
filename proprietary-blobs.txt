@@ -140,7 +140,6 @@ vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/activity_recognition.libra.so
 vendor/lib/hw/gatekeeper.msm8992.so
-vendor/lib/hw/keystore.msm8992.so
 vendor/lib/libsensors.lsm6db0.so
 vendor/lib/hw/sound_trigger.primary.msm8992.so
 vendor/lib/hw/tof.vl6180.so
@@ -241,7 +240,6 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/activity_recognition.libra.so
 vendor/lib64/hw/flp.default.so
 vendor/lib64/hw/gatekeeper.msm8992.so
-vendor/lib64/hw/keystore.msm8992.so
 vendor/lib64/libsensors.lsm6db0.so
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
