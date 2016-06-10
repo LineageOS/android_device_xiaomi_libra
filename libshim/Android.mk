@@ -16,7 +16,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := camera/sensor.cpp camera/SensorManager.cpp camera/Threads.c
+LOCAL_SRC_FILES := camera/sensor.cpp camera/SensorManager.cpp
 
 LOCAL_C_INCLUDES := camera
 LOCAL_SHARED_LIBRARIES := libgui libutils liblog libbinder libandroid
