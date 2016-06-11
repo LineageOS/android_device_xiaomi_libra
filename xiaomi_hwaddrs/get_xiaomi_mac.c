@@ -25,8 +25,10 @@ int main() {
     if (f != NULL) {
         i = qmi_nv_read_wlan_mac(&buf);
         if (i == 0) {
-            fprintf(f, "Intf0MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\nEND\n",
+            fprintf(f, "Intf0MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\n",
                     buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
+            fprintf(f, "Intf1MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\nEND\n",
+                    buf[0], buf[1], buf[2], buf[3], buf[4], buf[5] == 255 ? buf[5]-1 : buf[5]+1);
         } else {
             printf("Error reading WLAN MAC address from NV\n");
         }
