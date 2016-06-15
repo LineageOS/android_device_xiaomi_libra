@@ -186,7 +186,8 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint Sensor
 PRODUCT_PACKAGES += \
-    fingerprint.libra
+    fingerprint.libra \
+    fingerprintd
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
