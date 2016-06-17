@@ -18,17 +18,17 @@ on boot
     chown system system /dev/fpc1020
     chmod 660 /dev/fpc1020
 
-    chown system system /sys/bus/spi/drivers/fpc1020/spi1.2/clk_enable
-    chown system system /sys/bus/spi/drivers/fpc1020/spi1.2/wakeup_enable
-    chown system system /sys/bus/spi/drivers/fpc1020/spi1.2/irq
+    chown system system /sys/bus/spi/drivers/fpc1020/spi12.0/clk_enable
+    chown system system /sys/bus/spi/drivers/fpc1020/spi12.0/wakeup_enable
+    chown system system /sys/bus/spi/drivers/fpc1020/spi12.0/irq
 
 on post-fs-data
-    mkdir /data/fpc_tpl 770 system system
+    mkdir /data/fpc_tpl 0770 system system
     mkdir /data/fpc 0770 system system
 
 on charger
     # disable FPS clk
-    write /sys/bus/spi/drivers/fpc1020/spi1.2/clk_enable 0
+    write /sys/bus/spi/drivers/fpc1020/spi12.0/clk_enable 0
 
 on property:service.fingerprint.enable=0
     stop fingerprintd
