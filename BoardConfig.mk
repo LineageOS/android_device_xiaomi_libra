@@ -174,6 +174,9 @@ COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
+# Power
+TARGET_POWERHAL_VARIANT := qcom
+
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
