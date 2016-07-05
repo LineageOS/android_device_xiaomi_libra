@@ -1,5 +1,3 @@
-binder_service(fingerprintd)
-
 # Access to /dev/tee
 allow fingerprintd tee_device:chr_file rw_file_perms;
 
@@ -11,5 +9,6 @@ allow fingerprintd input_device:chr_file r_file_perms;
 allow fingerprintd sysfs_devices_fingerprint:dir r_dir_perms;
 allow fingerprintd sysfs_devices_fingerprint:file rw_file_perms;
 
-# allow access to /persist
-allow fingerprintd persist_file:dir search;
+allow fingerprintd fingerprintd_data_file:file create_file_perms;
+allow fingerprintd fingerprintd_data_file:sock_file create_file_perms;
+allow fingerprintd fingerprintd_data_file:dir create_dir_perms;

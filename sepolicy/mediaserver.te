@@ -1,15 +1,3 @@
-unix_socket_connect(mediaserver, thermal, thermal-engine)
-allow mediaserver thermal_socket:sock_file w_file_perms;
-
-allow mediaserver camera:unix_dgram_socket sendto;
-allow mediaserver camera_data_file:sock_file write;
-
-# allow communication w/perfd
-allow mediaserver perfd_data_file:dir search;
-allow mediaserver perfd_data_file:sock_file write;
-allow mediaserver perfd:unix_dgram_socket sendto;
-allow mediaserver perfd:unix_stream_socket connectto;
-
 allow mediaserver sensorservice_service:service_manager find;
 binder_call(mediaserver, servicemanager);
 binder_call(mediaserver, sensorservice_service);

@@ -1,9 +1,2 @@
-allow init tmpfs:lnk_file create_file_perms;
-# allow: write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
-allow init sysfs_ssr:lnk_file read;
-
 # For touchscreen proc files
 allow init proc_touchscreen:file write;
-
-# For rild
-allow init socket_device:sock_file { create setattr };

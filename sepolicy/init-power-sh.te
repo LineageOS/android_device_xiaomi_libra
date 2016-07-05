@@ -12,6 +12,7 @@ allow init-power-sh sysfs_performance:file w_file_perms;
 allow init-power-sh sysfs_thermal:dir search;
 allow init-power-sh sysfs_thermal:file w_file_perms;
 allow init-power-sh sysfs_power_management:file w_file_perms;
+allow init-power-sh sysfs_rqstats:dir r_dir_perms;
 
 # interactive files in /sys receive the default sysfs context when created
 # after the restorecon of /sys/. Allow init-power-sh to restorecon sysfs files
@@ -21,3 +22,6 @@ allow init-power-sh sysfs_devices_system_cpu:{ dir file lnk_file } relabelto;
 
 # execute toybox/toolbox
 allow init-power-sh toolbox_exec:file rx_file_perms;
+
+# load core_ctl
+allow init-power-sh self:capability sys_module;

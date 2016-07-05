@@ -316,7 +316,6 @@ service rfs_access /system/bin/rfs_access
    class core
    user system
    group system net_raw
-   seclabel u:r:rfs_access:s0
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
@@ -354,7 +353,6 @@ service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw diag usb net_admin
-    seclabel u:r:qti:s0
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -459,7 +457,6 @@ service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
-    seclabel u:r:tee:s0
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
@@ -479,7 +476,6 @@ service ril-daemon1 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
-    seclabel u:r:rild:s0
 
 service charger /sbin/healthd -c
     class charger
@@ -491,7 +487,6 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:camera:s0
 
 on property:persist.radio.atfwd.start=false
     stop atfwd
@@ -540,7 +535,6 @@ service libra-sh /system/bin/init.libra.sh
     user radio
     group system
     oneshot
-    seclabel u:r:libra-sh:s0
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
@@ -555,7 +549,6 @@ service xiaomi_hwaddrs /system/bin/xiaomi_hwaddrs
     user root
     group system wifi
     oneshot
-    seclabel u:r:xiaomi_hwaddrs:s0
 
 # Running hwaddrs under init is enforcing 0600, we need more
 on property:init.svc.xiaomi_hwaddrs=stopped
