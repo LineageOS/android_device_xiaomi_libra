@@ -12,9 +12,7 @@
 /dev/lirc0                             u:object_r:lirc_device:s0
 
 # System files
-/system/bin/perfd                  u:object_r:perfd_exec:s0
 /system/vendor/bin/qseecomd        u:object_r:tee_exec:s0
-/system/bin/thermal-engine         u:object_r:thermal-engine_exec:s0
 /system/vendor/bin/mm-qcamera-daemon u:object_r:mm-qcamerad_exec:s0
 /system/bin/init\.libra\.power\.sh u:object_r:init-power-sh_exec:s0
 /system/bin/init\.libra\.sh        u:object_r:libra-sh_exec:s0

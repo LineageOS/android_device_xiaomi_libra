@@ -51,13 +51,10 @@ bin/imsdatadaemon
 bin/imsqmidaemon
 bin/loc_launcher
 bin/location-mq
-bin/msm_irqbalance
 bin/nl_listener
-bin/perfd
 bin/port-bridge
 bin/qmakernote-xtract
 bin/subsystem_ramdump
-bin/thermal-engine
 bin/time_daemon
 bin/wcnss_filter
 etc/acdbdata/Forte/Forte_Bluetooth_cal.acdb
@@ -107,8 +104,6 @@ vendor/bin/qseecomd
 vendor/bin/qti
 vendor/bin/slim_daemon
 vendor/etc/audio_effects.conf
-vendor/etc/msm_irqbalance.conf
-vendor/etc/perf-profile0.conf
 vendor/firmware/a420_pfp.fw
 vendor/firmware/a420_pm4.fw
 vendor/firmware/cpp_firmware_v1_1_1.fw
@@ -210,15 +205,12 @@ vendor/lib/liboemcrypto.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
-vendor/lib/libqti-perfd-client.so
 vendor/lib/librpmb.so
 vendor/lib/librs.rnr_downscale.so
 vendor/lib/librs.rnr_process.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libssd.so
-vendor/lib/libthermalclient.so
-vendor/lib/libthermalioctl.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libvcel.so
 vendor/lib/libvoice-svc.so
@@ -299,14 +291,11 @@ vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_wifihal.so
 vendor/lib64/liblowi_wifihal_nl.so
 vendor/lib64/libmdsprpc.so
-vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/librpmb.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libssd.so
-vendor/lib64/libthermalclient.so
-vendor/lib64/libthermalioctl.so
 vendor/lib64/libtzdrmgenprov.so
 vendor/lib64/libvcel.so
 vendor/lib64/libvoice-svc.so
@@ -648,6 +637,25 @@ vendor/lib64/libsmemlog.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libtime_genoff.so
 vendor/lib64/libxml.so
+
+# Perf
+bin/energy-awareness
+bin/msm_irqbalance
+vendor/bin/perfd
+vendor/etc/perf-profile0.conf
+vendor/etc/perf-profile1.conf
+vendor/etc/perf-profile2.conf
+vendor/etc/perf-profile3.conf
+vendor/etc/perf-profile4.conf
+vendor/etc/perf-profile5.conf
+vendor/lib/libthermalclient.so
+vendor/lib64/libthermalclient.so
+
+# Thermal
+vendor/bin/thermal-engine
+vendor/lib/libqti-perfd-client.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libthermalioctl.so
 
 # Fingerprint blobs for aqua
 lib/lib_fpc_tac_shared.so

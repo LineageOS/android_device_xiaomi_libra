@@ -112,6 +112,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/thermal-engine-8992.conf:system/etc/thermal-engine-8992.conf
 
+# MSM IRQ balance
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/msm_irqbalance.conf:system/etc/msm_irqbalance.conf
+
 # Power configuration file
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/init.libra.power.sh:system/bin/init.libra.power.sh

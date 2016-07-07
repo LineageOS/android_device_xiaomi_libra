@@ -293,9 +293,9 @@ on post-fs-data
     mkdir /data/misc/audio 0770 audio audio
 
     # perf daemon
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    rm /data/misc/perfd/default_values
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
+    rm /data/system/perfd/default_values
 
     # Subsytem Ramdump collection
     mkdir /data/ramdump 0700 root root
@@ -343,10 +343,11 @@ service qmuxd /system/bin/qmuxd
     user radio
     group radio audio bluetooth gps
 
-service perfd /system/bin/perfd
+service perfd /system/vendor/bin/perfd
     class main
     user root
     group system
+    socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
@@ -375,13 +376,14 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service thermal-engine /system/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
     socket thermal-send-client stream 0666 system system
     socket thermal-recv-client stream 0660 system system
     socket thermal-recv-passive-client stream 0666 system system
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
@@ -458,7 +460,7 @@ service qseecomd /system/vendor/bin/qseecomd
     user root
     group root
 
-service msm_irqbalance /system/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
+service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
     class core
     user root
@@ -556,3 +558,9 @@ on property:init.svc.xiaomi_hwaddrs=stopped
     chown system wifi /data/misc/wifi/wlan_mac.bin
     chmod 644 /data/misc/bluetooth/bdaddr.txt
     chown bluetooth bluetooth /data/misc/bluetooth/bdaddr.txt
+
+service energy-awareness /system/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
