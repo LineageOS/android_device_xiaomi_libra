@@ -653,7 +653,9 @@ vendor/lib64/libthermalclient.so
 
 # Thermal
 vendor/bin/thermal-engine
+vendor/lib/libqti-iop-client.so
 vendor/lib/libqti-perfd-client.so
+vendor/lib64/libqti-iop-client.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libthermalioctl.so
 
