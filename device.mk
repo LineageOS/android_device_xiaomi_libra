@@ -281,6 +281,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.composition.type=c2d \
+    debug.egl.hw=1 \
+    debug.sf.hw=1 \
+    persist.metadata_dynfps.disable=true
+
 # Enable low power video mode for 4K encode
 PRODUCT_PROPERTY_OVERRIDES += \
     vidc.debug.perf.mode=2 \
