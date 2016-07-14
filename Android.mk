@@ -149,4 +149,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(WV_SYMLINKS)
 $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld ; \
 	ln -sf /data/misc/wifi/wlan_mac.bin $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin)
 
+# For creating rfs symbolic link in system partition
+include device/xiaomi/libra/tftp.mk
+
 endif
