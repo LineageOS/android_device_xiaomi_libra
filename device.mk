@@ -106,6 +106,11 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/libra/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
     device/xiaomi/libra/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
 
+PRODUCT_COPY_FILES += \
+    device/xiaomi/libra/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    device/xiaomi/libra/wifi/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
+    device/xiaomi/libra/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny
+
 # Thermal engine
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/thermal-engine-8992.conf:system/etc/thermal-engine-8992.conf
