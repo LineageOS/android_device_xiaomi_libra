@@ -266,6 +266,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=7 \
     audio.offload.pcm.24bit.enable=true
 
+# Custom acdb name
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.acdb.name=Forte
+
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1
