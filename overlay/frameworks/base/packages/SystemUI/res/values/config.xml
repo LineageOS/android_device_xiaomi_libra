@@ -28,7 +28,7 @@
     <bool name="doze_display_state_supported">true</bool>
 
     <!-- Doze: should the pickup sensor be used as a pulse signal? -->
-    <bool name="doze_pulse_on_pick_up">true</bool>
+    <bool name="doze_pulse_on_pick_up">false</bool>
 
     <!-- Control whether status bar should distinguish HSPA data icon form UMTS
         data icon on devices -->
