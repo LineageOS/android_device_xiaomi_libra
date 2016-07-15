@@ -638,7 +638,10 @@ vendor/lib64/libxml.so
 
 # Perf
 bin/energy-awareness
+bin/iop
 bin/msm_irqbalance
+lib/libqti-iop.so
+lib64/libqti-iop.so
 vendor/bin/perfd
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf

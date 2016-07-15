@@ -292,6 +292,9 @@ on post-fs-data
     # Audio
     mkdir /data/misc/audio 0770 audio audio
 
+    # Create IOP daemon dir
+    mkdir /data/misc/iop 0770 root system
+
     # perf daemon
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
@@ -348,6 +351,12 @@ service perfd /system/vendor/bin/perfd
     user root
     group system
     socket perfd seqpacket 0666 root system
+    writepid /dev/cpuset/system-background/tasks
+
+service iop /system/bin/iop
+    class main
+    user root
+    group root
     writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
