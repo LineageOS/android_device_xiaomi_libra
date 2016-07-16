@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     device/xiaomi/libra/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    device/xiaomi/libra/audio/audio_effects.conf:system/etc/audio_effects_vendor.conf \
+    device/xiaomi/libra/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/xiaomi/libra/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/xiaomi/libra/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/xiaomi/libra/audio/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg \
@@ -179,8 +179,7 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
     libqcomvisualizer \
-    libqcompostprocbundle \
-    libvolumelistener
+    libqcompostprocbundle
 
 PRODUCT_PACKAGES += \
     librmnetctl \
