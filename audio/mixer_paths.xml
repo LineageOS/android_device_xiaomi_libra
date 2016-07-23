@@ -1647,6 +1647,10 @@
         <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
+    <path name="line">
+        <path name="headphones" />
+    </path>
+
     <path name="headset-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
@@ -1706,6 +1710,10 @@
         <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
+    <path name="voice-line">
+        <path name="voice-headphones" />
+    </path>
+
     <path name="voice-headset-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
@@ -1730,6 +1738,10 @@
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="RX7 Digital Volume" value="88" />
         <ctl name="SPK DRV Volume" value="5" />
+    </path>
+
+    <path name="speaker-and-line">
+        <path name="speaker-and-headphones" />
     </path>
 
     <path name="speaker-protected-and-headphones">
