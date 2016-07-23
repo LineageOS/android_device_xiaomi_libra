@@ -271,7 +271,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
-    persist.speaker.prot.enable=true \
+    persist.speaker.prot.enable=false \
     ro.config.vc_call_vol_steps=7 \
     audio.offload.pcm.24bit.enable=true
 
