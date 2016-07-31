@@ -287,6 +287,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     audio_hal.period_size=192
 
+# Enable dirac effect for speaker
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.dirac.speaker=true
+
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15

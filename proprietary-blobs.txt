@@ -305,6 +305,11 @@ vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 
+# Dirac mobile
+lib/libDiracAPI_SHARED.so
+lib/soundfx/libdirac.so
+vendor/etc/diracmobile.config
+
 lib/hw/camera.vendor.msm8992.so
 vendor/lib/libFaceProc.so
 vendor/lib/libOpenCL.so
