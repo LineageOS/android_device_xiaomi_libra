@@ -95,7 +95,6 @@ lib64/libloc_eng.so
 vendor/bin/qseecomd
 vendor/bin/qti
 vendor/bin/slim_daemon
-vendor/etc/audio_effects.conf
 vendor/firmware/a420_pfp.fw
 vendor/firmware/a420_pm4.fw
 vendor/firmware/cpp_firmware_v1_1_1.fw
