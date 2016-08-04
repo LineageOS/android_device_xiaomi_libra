@@ -116,6 +116,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
     params.dump();
 #endif
 
+#if 0
     if (id == 0) { // back camera
         params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
             "1920x1080,1280x960,1280x720,720x480,640x480,576x432,320x240");
@@ -133,6 +134,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
         params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
             "1920x1080,1280x720,864x480,800x480,720x480,640x480,320x240,176x144");
     }
+#endif
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
