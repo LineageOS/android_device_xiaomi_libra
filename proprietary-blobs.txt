@@ -37,7 +37,6 @@
 -priv-app/LifeTimerService/LifeTimerService.apk
 -priv-app/SprintDM/SprintDM.apk
 -framework/cneapiclient.jar
--framework/com.google.widevine.software.drm.jar
 -framework/qcrilhook.jar
 -framework/rcsimssettings.jar
 -framework/rcsservice.jar
@@ -63,7 +62,6 @@ etc/izat.conf
 etc/lowi.conf
 etc/permissions/cneapiclient.xml
 etc/permissions/com.android.omadm.service.xml
-etc/permissions/com.google.widevine.software.drm.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/rcsservice.xml
@@ -112,12 +110,6 @@ vendor/firmware/venus.b03
 vendor/firmware/venus.b04
 vendor/firmware/venus.mbn
 vendor/firmware/venus.mdt
-vendor/firmware/widevine.b00
-vendor/firmware/widevine.b01
-vendor/firmware/widevine.b02
-vendor/firmware/widevine.b03
-vendor/firmware/widevine.mdt
-vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -152,7 +144,6 @@ vendor/lib/libCB.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libTimeService.so
-vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/libadm.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libadreno_utils.so
@@ -163,7 +154,6 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
-vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libfrsdk.so
@@ -202,10 +192,7 @@ vendor/lib/libvss_nv_core.so
 vendor/lib/libvss_nv_idl.so
 vendor/lib/libvss_nv_iface.so
 vendor/lib/libwms.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/rfsa/adsp/fastrpc_shell_0
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
