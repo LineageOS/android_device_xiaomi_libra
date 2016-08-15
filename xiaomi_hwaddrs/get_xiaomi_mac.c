@@ -27,8 +27,13 @@ int main() {
         if (i == 0) {
             fprintf(f, "Intf0MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\n",
                     buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
-            fprintf(f, "Intf1MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\nEND\n",
-                    buf[0], buf[1], buf[2], buf[3], buf[4], buf[5] == 255 ? buf[5]-1 : buf[5]+1);
+            /* Extended MAC, buf[5]-1 known for bluetooth */
+            fprintf(f, "Intf1MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\n",
+                    buf[0], buf[1], buf[2], buf[3], buf[4], buf[5] > 252 ? buf[5]-2 : buf[5]+1);
+            fprintf(f, "Intf2MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\n",
+                    buf[0], buf[1], buf[2], buf[3], buf[4], buf[5] > 252 ? buf[5]-3 : buf[5]+2);
+            fprintf(f, "Intf3MacAddress=%02hhx%02hhx%02hhx%02hhx%02hhx%02hhx\nEND\n",
+                    buf[0], buf[1], buf[2], buf[3], buf[4], buf[5] > 252 ? buf[5]-4 : buf[5]+3);
         } else {
             printf("Error reading WLAN MAC address from NV\n");
         }
