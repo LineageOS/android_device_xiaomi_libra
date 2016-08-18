@@ -143,8 +143,11 @@ PRODUCT_PACKAGES += \
     Gello
 
 # for off charging mode
+WITH_CM_CHARGER := false
+
 PRODUCT_PACKAGES += \
-    charger_res_images
+    charger_res_images \
+    libhealthd.qcom
 
 # aqua boot helper
 PRODUCT_PACKAGES += \
