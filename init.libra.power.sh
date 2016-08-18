@@ -104,8 +104,8 @@ write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200"
 write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # Enable and configure core_ctl (if available)
-if [ -e /system/lib/modules/msm_core_ctl.ko ]; then
-    insmod /system/lib/modules/msm_core_ctl.ko
+if [ -e /lib/modules/msm_core_ctl.ko ]; then
+    insmod /lib/modules/msm_core_ctl.ko
     if [ $? -eq 0 ]; then
         restorecon -R /sys/devices/system/cpu # must restore after insmod
         write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
