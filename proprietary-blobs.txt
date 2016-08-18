@@ -661,3 +661,7 @@ vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 vendor/lib64/libTimeService.so
 -vendor/lib64/libtime_genoff.so
+
+# NV libs for MAC address
+-lib/libqminvapi.so
+-lib64/libqminvapi.so

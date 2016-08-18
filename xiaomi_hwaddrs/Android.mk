@@ -17,17 +17,6 @@
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := libqminvapi
-LOCAL_MODULE_OWNER := xiaomi
-LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES_arm := lib/libqminvapi.so
-LOCAL_SRC_FILES_arm64 := lib64/libqminvapi.so
-LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)
-LOCAL_MODULE_SUFFIX := .so
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE := xiaomi_hwaddrs
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := get_xiaomi_mac.c
