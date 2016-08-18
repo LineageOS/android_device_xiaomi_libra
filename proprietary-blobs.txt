@@ -24,7 +24,6 @@
 -app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -app/RCSBootstraputil/RCSBootstraputil.apk
 -app/RcsImsBootstraputil/RcsImsBootstraputil.apk
--app/TimeService/TimeService.apk
 -app/Tycho/Tycho.apk
 -priv-app/CNEService/CNEService.apk
 -priv-app/ConnMO/ConnMO.apk
@@ -54,7 +53,6 @@ bin/nl_listener
 bin/port-bridge
 bin/qmakernote-xtract
 bin/subsystem_ramdump
-bin/time_daemon
 bin/wcnss_filter
 etc/cne/profile.txt
 etc/flp.conf
@@ -143,7 +141,6 @@ vendor/lib/libC2D2.so
 vendor/lib/libCB.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libTimeService.so
 vendor/lib/libadm.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libadreno_utils.so
@@ -228,7 +225,6 @@ vendor/lib64/libCommandSvc.so
 vendor/lib64/libEGL_adreno.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libRSDriver_adreno.so
-vendor/lib64/libTimeService.so
 vendor/lib64/libadreno_utils.so
 vendor/lib64/libadsprpc.so
 vendor/lib64/libbccQTI.so
@@ -600,7 +596,6 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 vendor/lib/libsmemlog.so
-vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/libdiag.so
@@ -627,7 +622,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsmemlog.so
 vendor/lib64/libsystem_health_mon.so
-vendor/lib64/libtime_genoff.so
 vendor/lib64/libxml.so
 
 # Perf
@@ -659,3 +653,11 @@ lib/lib_fpc_tac_shared.so
 lib/hw/fingerprint.libra.so
 lib64/lib_fpc_tac_shared.so
 lib64/hw/fingerprint.libra.so
+
+# Time services
+-app/TimeService/TimeService.apk
+bin/time_daemon
+vendor/lib/libTimeService.so
+-vendor/lib/libtime_genoff.so
+vendor/lib64/libTimeService.so
+-vendor/lib64/libtime_genoff.so
