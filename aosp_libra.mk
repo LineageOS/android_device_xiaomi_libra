@@ -31,4 +31,4 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_RESTRICT_VENDOR_FILES := true
 
 $(call inherit-product, device/xiaomi/libra/device.mk)
-$(call inherit-product-if-exists, vendor/xiaomi/libra/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/libra/libra-vendor.mk)
