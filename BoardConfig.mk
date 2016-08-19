@@ -56,6 +56,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 
 # Kernel modules in rootfs
 NEED_KERNEL_MODULE_ROOT := true
+BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/libra/mkbootimg.mk
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_libra
