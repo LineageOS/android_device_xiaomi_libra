@@ -74,6 +74,9 @@ on init
     # Update rootfs based on variant
     exec u:r:aqua:s0 root root -- /sbin/aqua -u
 
+    # Enable RTC alarm, don't clear alarm register
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
 on fs
     mount_all ./fstab.libra
     # swapon_all ./fstab.libra
