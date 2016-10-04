@@ -256,6 +256,9 @@ on boot
     chown system graphics /sys/class/graphics/fb0/mode
     chown system graphics /sys/class/graphics/fb0/modes
 
+    # Use boot-time as video timestamp reference
+    setprop media.camera.ts.monotonic 0
+
 on post-fs-data
     # Mark the copy complete flag to not completed
     mkdir /data/misc/radio 0770 radio radio
