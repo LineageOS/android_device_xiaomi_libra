@@ -14,7 +14,7 @@
 
 on init
     write /sys/class/android_usb/android0/f_rndis/manufacturer Xiaomi
-    write /sys/class/android_usb/android0/f_rndis/vendorID 18D1
+    write /sys/class/android_usb/android0/f_rndis/vendorID 2717
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
 on boot
@@ -36,8 +36,8 @@ on post-fs-data
 on property:sys.usb.config=mtp
     stop adbd
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE1
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF60
     write /sys/class/android_usb/android0/bDeviceClass 0
     write /sys/class/android_usb/android0/bDeviceSubClass 0
     write /sys/class/android_usb/android0/bDeviceProtocol 0
@@ -49,8 +49,8 @@ on property:sys.usb.config=mtp
 
 on property:sys.usb.config=mtp,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE2
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF68
     write /sys/class/android_usb/android0/bDeviceClass 0
     write /sys/class/android_usb/android0/bDeviceSubClass 0
     write /sys/class/android_usb/android0/bDeviceProtocol 0
@@ -65,8 +65,8 @@ on property:sys.usb.config=mtp,adb
 on property:sys.usb.config=rndis
     stop adbd
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE3
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF80
     write /sys/class/android_usb/android0/bDeviceClass 239
     write /sys/class/android_usb/android0/bDeviceSubClass 2
     write /sys/class/android_usb/android0/bDeviceProtocol 1
@@ -76,8 +76,8 @@ on property:sys.usb.config=rndis
 
 on property:sys.usb.config=rndis,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE4
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF88
     write /sys/class/android_usb/android0/bDeviceClass 239
     write /sys/class/android_usb/android0/bDeviceSubClass 2
     write /sys/class/android_usb/android0/bDeviceProtocol 1
@@ -90,8 +90,8 @@ on property:sys.usb.config=rndis,adb
 on property:sys.usb.config=ptp
     stop adbd
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE5
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF10
     write /sys/class/android_usb/android0/bDeviceClass 0
     write /sys/class/android_usb/android0/bDeviceSubClass 0
     write /sys/class/android_usb/android0/bDeviceProtocol 0
@@ -101,8 +101,8 @@ on property:sys.usb.config=ptp
 
 on property:sys.usb.config=ptp,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE6
+    write /sys/class/android_usb/android0/idVendor 2717
+    write /sys/class/android_usb/android0/idProduct FF18
     write /sys/class/android_usb/android0/bDeviceClass 0
     write /sys/class/android_usb/android0/bDeviceSubClass 0
     write /sys/class/android_usb/android0/bDeviceProtocol 0
@@ -148,8 +148,8 @@ on property:sys.usb.config=diag,adb
 on property:sys.usb.config=midi
     stop adbd
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE8
+    write /sys/class/android_usb/android0/idVendor 05C6
+    write /sys/class/android_usb/android0/idProduct 90BA
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
@@ -157,8 +157,8 @@ on property:sys.usb.config=midi
 # USB midi configuration, with adb
 on property:sys.usb.config=midi,adb
     write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 18D1
-    write /sys/class/android_usb/android0/idProduct 4EE9
+    write /sys/class/android_usb/android0/idVendor 05C6
+    write /sys/class/android_usb/android0/idProduct 90BB
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
     start adbd
