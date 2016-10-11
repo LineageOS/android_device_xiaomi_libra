@@ -175,7 +175,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler
+    audio_policy.msm8992
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -275,7 +275,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     persist.speaker.prot.enable=false \
     ro.config.vc_call_vol_steps=7 \
-    audio.offload.pcm.24bit.enable=true
+    audio.offload.pcm.24bit.enable=true \
+    audio.offload.pcm.16bit.enable=false \
+    audio.offload.gapless.enabled=true \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.video=true \
+    audio.offload.multiple.enabled=false \
+    av.streaming.offload.enable=true \
+    audio.deep_buffer.media=true \
+    use.voice.path.for.pcm.voip=true
 
 # Custom acdb name
 PRODUCT_PROPERTY_OVERRIDES += \
