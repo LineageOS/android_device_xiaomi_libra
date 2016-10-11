@@ -665,3 +665,7 @@ vendor/lib64/libTimeService.so
 # NV libs for MAC address
 -lib/libqminvapi.so
 -lib64/libqminvapi.so
+
+# Keystore
+vendor/lib/hw/keystore.msm8992.so
+vendor/lib64/hw/keystore.msm8992.so
