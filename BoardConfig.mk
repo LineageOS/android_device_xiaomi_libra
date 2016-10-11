@@ -130,6 +130,9 @@ HAVE_ADRENO_SOURCE:= false
 
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
+# Qualcomm support
+BOARD_USES_QCOM_HARDWARE := true
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_PROVIDES_RILD := true
