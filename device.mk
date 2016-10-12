@@ -291,6 +291,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.deep_buffer.media=true \
     use.voice.path.for.pcm.voip=true
 
+# Stereo camcorder
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.camcorder.stereo=true
+
 # Custom acdb name
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.acdb.name=Forte

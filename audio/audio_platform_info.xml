@@ -40,8 +40,13 @@
         <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="165"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="166"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_STEREO_DMIC" acdb_id="140" />
     </acdb_ids>
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
     </bit_width_configs>
+    <device_names>
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" alias="handset-stereo-dmic-ef" />
+        <device name="SND_DEVICE_IN_CAMCORDER_STEREO_DMIC" alias="speaker-stereo-dmic-ef" />
+    </device_names>
 </audio_platform_info>
