@@ -168,7 +168,12 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc
+    libOmxVenc \
+    libdivxdrmdecrypt \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
 
 # Audio HAL and utilities
 PRODUCT_PACKAGES += \
@@ -337,8 +342,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable low power video mode for 4K encode
 PRODUCT_PROPERTY_OVERRIDES += \
-    vidc.debug.perf.mode=2 \
+    vidc.debug.level=1 \
     vidc.enc.dcvs.extra-buff-count=2
+
+# Enable smooth streaming
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=56 \

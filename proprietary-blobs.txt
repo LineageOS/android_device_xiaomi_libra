@@ -669,3 +669,13 @@ vendor/lib64/libTimeService.so
 # Keystore
 vendor/lib/hw/keystore.msm8992.so
 vendor/lib64/hw/keystore.msm8992.so
+
+# Media
+vendor/lib/libDivxDrm.so
+vendor/lib/libI420colorconvert.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libSHIMDivxDrm.so
+vendor/lib/libmm-color-convertor.so
+vendor/lib/libmmosal.so
