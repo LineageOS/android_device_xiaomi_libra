@@ -349,6 +349,12 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
+on property:wc_transport.start_root=true
+    start start_hci_filter
+
+on property:wc_transport.start_root=false
+    stop start_hci_filter
+
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     disabled
     oneshot
