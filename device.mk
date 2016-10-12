@@ -272,8 +272,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.ssr=true \
-    persist.audio.ssr.3mic=true \
+    ro.qc.sdk.audio.ssr=false \
+    persist.audio.ssr.3mic=false \
     ro.qc.sdk.audio.fluencetype=fluence \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicecomm=true \
