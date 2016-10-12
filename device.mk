@@ -468,6 +468,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/data/misc/bluetooth/bdaddr.txt
 
+# Enable hands-free profile and set power class
+PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.hfp.client=1 \
+    ro.bluetooth.hfp.ver=1.6 \
+    qcom.bt.le_dev_pwr_class=1
+
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.boot-dex2oat-threads=4 \
