@@ -666,10 +666,6 @@ vendor/lib64/libTimeService.so
 -lib/libqminvapi.so
 -lib64/libqminvapi.so
 
-# Keystore
-vendor/lib/hw/keystore.msm8992.so
-vendor/lib64/hw/keystore.msm8992.so
-
 # Media
 vendor/lib/libDivxDrm.so
 vendor/lib/libI420colorconvert.so
