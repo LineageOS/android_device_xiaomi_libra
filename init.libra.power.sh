@@ -111,6 +111,10 @@ write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 40
 write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
 write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
 write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 20
+write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 5
+write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 5000
+write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
 
 # Setting B.L scheduler parameters
 write /proc/sys/kernel/sched_migration_fixup 1
