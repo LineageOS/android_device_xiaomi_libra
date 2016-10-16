@@ -331,11 +331,13 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system
+    writepid /dev/cpuset/system-background/tasks
 
 service rfs_access /system/bin/rfs_access
    class core
    user system
    group system net_raw
+   writepid /dev/cpuset/system-background/tasks
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
@@ -368,6 +370,7 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps
+    writepid /dev/cpuset/system-background/tasks
 
 service perfd /system/vendor/bin/perfd
     class main
@@ -386,21 +389,25 @@ service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw diag usb net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
     class main
     group radio system
+    writepid /dev/cpuset/system-background/tasks
 
 service per_mgr /system/bin/pm-service
     class core
     user system
     group system net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 service per_proxy /system/bin/pm-proxy
     class core
     user system
     group system net_raw
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 on property:init.svc.per_mgr=running
     start per_proxy
@@ -483,6 +490,7 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw diag net_admin wifi
+    writepid /dev/cpuset/system-background/tasks
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
@@ -491,6 +499,7 @@ service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
@@ -503,6 +512,16 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
+
+service_redefine ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio log qcom_diag
+    writepid /dev/cpuset/system-background/tasks
 
 service ril-daemon1 /system/bin/rild -c 2
     class main
@@ -510,11 +529,13 @@ service ril-daemon1 /system/bin/rild -c 2
     socket rild-debug2 stream 660 radio system
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+    writepid /dev/cpuset/system-background/tasks
 
 service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
+    writepid /dev/cpuset/system-background/tasks
 
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
@@ -540,8 +561,10 @@ service ss_ramdump /system/bin/subsystem_ramdump
     disabled
 
 service cnd /system/bin/cnd
-    class late_start
+    class main
     socket cnd stream 660 root inet
+    group root
+    writepid /dev/cpuset/system-background/tasks
 
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
