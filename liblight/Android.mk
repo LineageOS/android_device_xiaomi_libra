@@ -28,7 +28,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := lights.c
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_MODULE := lights.libra
 LOCAL_MODULE_TAGS := optional
 

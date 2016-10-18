@@ -19,6 +19,7 @@
 #define LOG_TAG "lights"
 
 #include <cutils/log.h>
+#include <cutils/properties.h>
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -120,6 +121,20 @@ void init_globals(void)
 {
     // init the mutex
     pthread_mutex_init(&g_lock, NULL);
+}
+
+static int isHvdcp()
+{
+    char buf[10];
+
+    FILE *f = fopen("/sys/class/power_supply/usb/type", "r");
+    if (f != NULL) {
+        fscanf(f, "%s", buf);
+        fclose(f);
+        return (strstr(buf, "USB_HVDCP") != NULL);
+    }
+
+    return 0;
 }
 
 static int
@@ -342,8 +357,18 @@ static int
 set_light_battery(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    char prop[PROP_VALUE_MAX];
+
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
+    if (isHvdcp() && (g_battery.flashMode == LIGHT_FLASH_TIMED)) {
+        property_get("sys.quick_charging_led.disable", prop, "false");
+        if (strstr(prop, "true") != NULL)
+            g_battery.flashMode = LIGHT_FLASH_NONE;
+        else
+            // Don't too intrusive: 125 ms on, 1000 ms off
+            g_battery.flashOffMS = g_battery.flashOffMS * 8;
+    }
     handle_speaker_light_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return 0;
