@@ -139,10 +139,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # for off charging mode
 WITH_CM_CHARGER := false
 
