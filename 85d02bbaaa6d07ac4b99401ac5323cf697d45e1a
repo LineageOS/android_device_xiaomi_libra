@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa82b9bf_dcba250a",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-05-25T13:56:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 37
+      },
+      "revId": "85d02bbaaa6d07ac4b99401ac5323cf697d45e1a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
