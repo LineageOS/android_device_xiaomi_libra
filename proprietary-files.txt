@@ -711,14 +711,6 @@ vendor/lib/libsensor_reg.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 
-# Subsystem restart
-bin/qcom-system-daemon
-bin/ssr_diag
-bin/ssr_setup
-bin/subsystem_ramdump
-vendor/lib/libsubsystem_control.so
-vendor/lib64/libsubsystem_control.so
-
 # Time services
 -app/TimeService/TimeService.apk
 bin/time_daemon
