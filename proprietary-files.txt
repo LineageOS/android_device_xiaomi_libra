@@ -699,6 +699,7 @@ vendor/lib64/libsystem_health_mon.so
 
 # Sensors
 etc/sensor_diag.cfg
+etc/sensors/hals.conf|8c17cd849eff5cf135cfdc1081404412505e7e7f
 etc/sensors/sensor_def_qcomdev.conf
 lib/hw/activity_recognition.msm8994.so
 lib/hw/sensors.lsm6db0.so
