@@ -699,7 +699,6 @@ vendor/lib64/libsystem_health_mon.so
 
 # Sensors
 etc/sensor_diag.cfg
-etc/sensors/sensor_def_qcomdev.conf
 lib/hw/activity_recognition.msm8994.so
 lib/hw/sensors.lsm6db0.so
 lib64/hw/activity_recognition.msm8994.so
