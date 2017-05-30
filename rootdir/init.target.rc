@@ -257,6 +257,8 @@ on property:sys.perf.profile=0
   write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
   write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 0
   write /sys/module/cpu_boost/parameters/input_boost_enabled 0
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200 1:787200 2:0 3:0 4:0 5:0"
+  write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # bias power save
 on property:sys.perf.profile=3
@@ -266,6 +268,8 @@ on property:sys.perf.profile=3
   write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
   write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 0
   write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200 1:787200 2:0 3:0 4:0 5:0"
+  write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # balanced
 on property:sys.perf.profile=1
@@ -275,6 +279,8 @@ on property:sys.perf.profile=1
   write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
   write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
   write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200 1:787200 2:0 3:0 4:0 5:0"
+  write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # bias high performance
 on property:sys.perf.profile=4
@@ -284,6 +290,8 @@ on property:sys.perf.profile=4
   write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
   write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
   write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200 1:787200 2:0 3:0 4:0 5:0"
+  write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 # high performance
 on property:sys.perf.profile=2
@@ -293,3 +301,5 @@ on property:sys.perf.profile=2
   write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
   write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
   write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+  write /sys/module/cpu_boost/parameters/input_boost_freq "0:787200 1:787200 2:0 3:0 4:0 5:0"
+  write /sys/module/cpu_boost/parameters/input_boost_ms 40
