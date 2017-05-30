@@ -115,11 +115,11 @@ do
 done
 
 # Set core_ctl module parameters
-echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
-echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
+echo 54 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
+echo 41 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
 echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
 echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
-echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
+echo 3 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
 
 # Set b.L scheduler parameters
 echo 1 > /proc/sys/kernel/sched_migration_fixup
