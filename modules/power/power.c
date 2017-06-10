@@ -86,9 +86,6 @@ static void power_set_interactive(struct power_module *module __unused,
 
 static void set_power_profile(int profile)
 {
-    if (profile == current_power_profile)
-        return;
-
     switch (profile) {
     case PROFILE_POWER_SAVE:
         property_set(POWER_PROFILE_PROPERTY, POWER_SAVE_PROP);
