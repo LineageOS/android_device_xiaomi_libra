@@ -108,7 +108,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 endif
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/qcom/display \
-        hardware/qcom/media/libstagefrighthw
+        $(call project-path-for,qcom-media)/libstagefrighthw
 
 # if debug service layer and up , use stub camera!
 LOCAL_C_INCLUDES += \
