@@ -1,4 +1,9 @@
 PRODUCT_PACKAGES += \
+    camera.msm8992 \
+    libqomx_core \
+    libmm-qcamera \
+
+PRODUCT_PACKAGES += \
     Snap
 
 PRODUCT_COPY_FILES += \
