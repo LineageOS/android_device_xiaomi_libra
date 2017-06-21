@@ -51,7 +51,7 @@ static mm_camera_ctrl_t g_cam_ctrl = {0, {{0}}, {0}, {{0}}};
 
 static pthread_mutex_t g_handler_lock = PTHREAD_MUTEX_INITIALIZER;
 static uint16_t g_handler_history_count = 0; /* history count for handler */
-volatile uint32_t gMmCameraIntfLogLevel = 1;
+volatile uint32_t gMmCameraIntfLogLevel = 2;
 
 /*===========================================================================
  * FUNCTION   : mm_camera_util_generate_handler
@@ -1517,7 +1517,7 @@ uint8_t get_num_of_cameras()
     int32_t sd_fd = -1;
     struct sensor_init_cfg_data cfg;
     char prop[PROPERTY_VALUE_MAX];
-    uint32_t globalLogLevel = 0;
+    uint32_t globalLogLevel = 2;
 
     property_get("persist.camera.hal.debug", prop, "0");
     int val = atoi(prop);
