@@ -43,6 +43,7 @@
 
 #include "QCamera2HWI.h"
 #include "QCameraMem.h"
+#include "QCamera2Capabilities.h"
 
 #define MAP_TO_DRIVER_COORDINATE(val, base, scale, offset) \
   ((int32_t)val * (int32_t)scale / (int32_t)base + (int32_t)offset)
@@ -1425,6 +1426,7 @@ int QCamera2HardwareInterface::initCapabilities(uint32_t cameraId,
 {
     ATRACE_CALL();
     int rc = NO_ERROR;
+    size_t i;
     QCameraHeapMemory *capabilityHeap = NULL;
 
     /* Allocate memory for capability buffer */
@@ -1459,6 +1461,184 @@ int QCamera2HardwareInterface::initCapabilities(uint32_t cameraId,
     }
     memcpy(gCamCaps[cameraId], DATA_PTR(capabilityHeap,0),
                                         sizeof(cam_capability_t));
+
+    // Configure both cameras from scratch
+    gCamCaps[cameraId]->smooth_zoom_supported = 0;
+    gCamCaps[cameraId]->zoom_supported = 1;
+    gCamCaps[cameraId]->video_snapshot_supported = 1;
+    gCamCaps[cameraId]->video_stablization_supported = 0;
+    gCamCaps[cameraId]->auto_exposure_lock_supported = 1;
+    gCamCaps[cameraId]->auto_wb_lock_supported = 1;
+    gCamCaps[cameraId]->qcom_supported_feature_mask = 132735;
+    gCamCaps[cameraId]->min_num_pp_bufs = 6;
+    gCamCaps[cameraId]->min_required_pp_mask |= CAM_QCOM_FEATURE_SHARPNESS;
+    gCamCaps[cameraId]->max_num_roi = 5;
+    gCamCaps[cameraId]->auto_hdr_supported = 1;
+
+    for (i = 0; i < ARRAY_SIZE(new_prvw_fmts); i++)
+        gCamCaps[cameraId]->supported_preview_fmts[i] = new_prvw_fmts[i];
+    gCamCaps[cameraId]->supported_preview_fmt_cnt = ARRAY_SIZE(new_prvw_fmts);
+
+    gCamCaps[cameraId]->supported_raw_fmts[0] = CAM_FORMAT_BAYER_MIPI_RAW_10BPP_RGGB;
+    gCamCaps[cameraId]->supported_raw_fmts[1] = CAM_FORMAT_BAYER_QCOM_RAW_10BPP_RGGB;
+    gCamCaps[cameraId]->supported_raw_fmt_cnt = 2;
+
+    gCamCaps[cameraId]->max_num_metering_areas = 5;
+
+    gCamCaps[cameraId]->saturation_ctrl.min_value = 0;
+    gCamCaps[cameraId]->saturation_ctrl.max_value = 10;
+    gCamCaps[cameraId]->saturation_ctrl.step = 1;
+    gCamCaps[cameraId]->saturation_ctrl.def_value = 5;
+
+    gCamCaps[cameraId]->sharpness_ctrl.min_value = 0;
+    gCamCaps[cameraId]->sharpness_ctrl.max_value = 36;
+    gCamCaps[cameraId]->sharpness_ctrl.step = 6;
+    gCamCaps[cameraId]->sharpness_ctrl.def_value = 12;
+
+    gCamCaps[cameraId]->contrast_ctrl.min_value = 0;
+    gCamCaps[cameraId]->contrast_ctrl.max_value = 10;
+    gCamCaps[cameraId]->contrast_ctrl.step = 1;
+    gCamCaps[cameraId]->contrast_ctrl.def_value = 5;
+
+    gCamCaps[cameraId]->sce_ctrl.min_value = -100;
+    gCamCaps[cameraId]->sce_ctrl.max_value = 100;
+    gCamCaps[cameraId]->sce_ctrl.step = 10;
+    gCamCaps[cameraId]->sce_ctrl.def_value = 0;
+
+    gCamCaps[cameraId]->brightness_ctrl.min_value = 0;
+    gCamCaps[cameraId]->brightness_ctrl.max_value = 6;
+    gCamCaps[cameraId]->brightness_ctrl.step = 1;
+    gCamCaps[cameraId]->brightness_ctrl.def_value = 3;
+
+    for (i = 0; i < ARRAY_SIZE(new_aec_modes); i++)
+        gCamCaps[cameraId]->supported_aec_modes[i] = new_aec_modes[i];
+    gCamCaps[cameraId]->supported_aec_modes_cnt = ARRAY_SIZE(new_aec_modes);
+
+    gCamCaps[cameraId]->exposure_compensation_max = 12;
+    gCamCaps[cameraId]->exposure_compensation_min = -12;
+    gCamCaps[cameraId]->exposure_compensation_step = (float)1/6;
+    gCamCaps[cameraId]->exposure_compensation_default = 0;
+
+    for (i = 0; i < ARRAY_SIZE(new_antibanding_modes); i++)
+        gCamCaps[cameraId]->supported_antibandings[i] = new_antibanding_modes[i];
+    gCamCaps[cameraId]->supported_antibandings_cnt = ARRAY_SIZE(new_antibanding_modes);
+
+    for (i = 0; i < ARRAY_SIZE(new_effect_modes); i++)
+        gCamCaps[cameraId]->supported_effects[i] = new_effect_modes[i];
+    gCamCaps[cameraId]->supported_effects_cnt = ARRAY_SIZE(new_effect_modes);
+
+    for (i = 0; i < ARRAY_SIZE(new_wb_modes); i++)
+        gCamCaps[cameraId]->supported_white_balances[i] = new_wb_modes[i];
+    gCamCaps[cameraId]->supported_white_balances_cnt = ARRAY_SIZE(new_wb_modes);
+
+    for (i = 0; i < ARRAY_SIZE(new_scene_modes); i++)
+        gCamCaps[cameraId]->supported_scene_modes[i] = new_scene_modes[i];
+    gCamCaps[cameraId]->supported_scene_modes_cnt = ARRAY_SIZE(new_scene_modes);
+
+    for (i = 0; i < ARRAY_SIZE(new_iso_modes); i++)
+        gCamCaps[cameraId]->supported_iso_modes[i] = new_iso_modes[i];
+    gCamCaps[cameraId]->supported_iso_modes_cnt = ARRAY_SIZE(new_iso_modes);
+
+    for (i = 0; i < ARRAY_SIZE(new_focus_algos); i++)
+        gCamCaps[cameraId]->supported_focus_algos[i] = new_focus_algos[i];
+    gCamCaps[cameraId]->supported_focus_algos_cnt = ARRAY_SIZE(new_focus_algos);
+
+    for (i = 0; i < ARRAY_SIZE(new_zoom_ratios); i++)
+        gCamCaps[cameraId]->zoom_ratio_tbl[i] = new_zoom_ratios[i];
+    gCamCaps[cameraId]->zoom_ratio_tbl_cnt = ARRAY_SIZE(new_zoom_ratios);
+
+    gCamCaps[cameraId]->histogram_supported = 1;
+
+    gCamCaps[cameraId]->padding_info.width_padding = CAM_PAD_TO_64;
+    gCamCaps[cameraId]->padding_info.height_padding = CAM_PAD_TO_64;
+    gCamCaps[cameraId]->padding_info.plane_padding = CAM_PAD_TO_64;
+
+    if (gCamCaps[cameraId]->position == CAM_POSITION_BACK) {
+        gCamCaps[cameraId]->max_num_focus_areas = 1;
+        gCamCaps[cameraId]->focal_length = 4.12;
+        gCamCaps[cameraId]->hor_view_angle = 58.6;
+        gCamCaps[cameraId]->ver_view_angle = 45.2;
+        gCamCaps[cameraId]->supported_raw_dim_cnt = 1;
+        gCamCaps[cameraId]->raw_dim[0].width = 4208;
+        gCamCaps[cameraId]->raw_dim[0].height = 3120;
+
+        for (i = 0; i < ARRAY_SIZE(new_flash_modes_cam0); i++)
+            gCamCaps[cameraId]->supported_flash_modes[i] = new_flash_modes_cam0[i];
+        gCamCaps[cameraId]->supported_flash_modes_cnt = ARRAY_SIZE(new_flash_modes_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_focus_modes_cam0); i++)
+            gCamCaps[cameraId]->supported_focus_modes[i] = new_focus_modes_cam0[i];
+        gCamCaps[cameraId]->supported_focus_modes_cnt = ARRAY_SIZE(new_focus_modes_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_fps_ranges_cam0); i++)
+            gCamCaps[cameraId]->fps_ranges_tbl[i] = new_fps_ranges_cam0[i];
+        gCamCaps[cameraId]->fps_ranges_tbl_cnt = ARRAY_SIZE(new_fps_ranges_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_pic_sizes_cam0); i++)
+            gCamCaps[cameraId]->picture_sizes_tbl[i] = new_pic_sizes_cam0[i];
+        gCamCaps[cameraId]->picture_sizes_tbl_cnt = ARRAY_SIZE(new_pic_sizes_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_vid_sizes_cam0); i++)
+            gCamCaps[cameraId]->video_sizes_tbl[i] = new_vid_sizes_cam0[i];
+        gCamCaps[cameraId]->video_sizes_tbl_cnt = ARRAY_SIZE(new_vid_sizes_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_vid_sizes_cam0); i++)
+            gCamCaps[cameraId]->livesnapshot_sizes_tbl[i] = new_vid_sizes_cam0[i];
+        gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt = ARRAY_SIZE(new_vid_sizes_cam0);
+
+        for (i = 0; i < ARRAY_SIZE(new_prvw_sizes_cam0); i++)
+            gCamCaps[cameraId]->preview_sizes_tbl[i] = new_prvw_sizes_cam0[i];
+        gCamCaps[cameraId]->preview_sizes_tbl_cnt = ARRAY_SIZE(new_prvw_sizes_cam0);
+
+        gCamCaps[cameraId]->hfr_tbl_cnt = 2;
+
+        gCamCaps[cameraId]->hfr_tbl[0].mode = CAM_HFR_MODE_60FPS;
+        gCamCaps[cameraId]->hfr_tbl[0].dim = (cam_dimension_t){1920, 1080};
+        gCamCaps[cameraId]->hfr_tbl[0].frame_skip = 0;
+        gCamCaps[cameraId]->hfr_tbl[0].livesnapshot_sizes_tbl_cnt = gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt;
+        for (i = 0; i < gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt; i++)
+            gCamCaps[cameraId]->hfr_tbl[0].livesnapshot_sizes_tbl[i] = gCamCaps[cameraId]->livesnapshot_sizes_tbl[i];
+
+        gCamCaps[cameraId]->hfr_tbl[1].mode = CAM_HFR_MODE_120FPS;
+        gCamCaps[cameraId]->hfr_tbl[1].dim = (cam_dimension_t){1280, 720};
+        gCamCaps[cameraId]->hfr_tbl[1].frame_skip = 0;
+        gCamCaps[cameraId]->hfr_tbl[1].livesnapshot_sizes_tbl_cnt = gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt;
+        for (i = 0; i < gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt; i++)
+            gCamCaps[cameraId]->hfr_tbl[1].livesnapshot_sizes_tbl[i] = gCamCaps[cameraId]->livesnapshot_sizes_tbl[i];
+    } else if (gCamCaps[cameraId]->position == CAM_POSITION_FRONT) {
+        gCamCaps[cameraId]->max_num_focus_areas = 0;
+        gCamCaps[cameraId]->focal_length = 1.94;
+        gCamCaps[cameraId]->hor_view_angle = 72.2;
+        gCamCaps[cameraId]->ver_view_angle = 57.3;
+        gCamCaps[cameraId]->supported_raw_dim_cnt = 1;
+        gCamCaps[cameraId]->raw_dim[0].width = 2592;
+        gCamCaps[cameraId]->raw_dim[0].height = 1944;
+
+        gCamCaps[cameraId]->supported_focus_modes[0] = CAM_FOCUS_MODE_FIXED;
+        gCamCaps[cameraId]->supported_focus_modes_cnt = 1;
+
+        gCamCaps[cameraId]->supported_flash_modes_cnt = 0;
+
+        for (i = 0; i < ARRAY_SIZE(new_fps_ranges_cam1); i++)
+            gCamCaps[cameraId]->fps_ranges_tbl[i] = new_fps_ranges_cam1[i];
+        gCamCaps[cameraId]->fps_ranges_tbl_cnt = ARRAY_SIZE(new_fps_ranges_cam1);
+
+        for (i = 0; i < ARRAY_SIZE(new_pic_sizes_cam1); i++)
+            gCamCaps[cameraId]->picture_sizes_tbl[i] = new_pic_sizes_cam1[i];
+        gCamCaps[cameraId]->picture_sizes_tbl_cnt = ARRAY_SIZE(new_pic_sizes_cam1);
+
+        for (i = 0; i < ARRAY_SIZE(new_vid_sizes_cam1); i++)
+            gCamCaps[cameraId]->video_sizes_tbl[i] = new_vid_sizes_cam1[i];
+        gCamCaps[cameraId]->video_sizes_tbl_cnt = ARRAY_SIZE(new_vid_sizes_cam1);
+
+        for (i = 0; i < ARRAY_SIZE(new_prvw_sizes_cam1); i++)
+            gCamCaps[cameraId]->preview_sizes_tbl[i] = new_prvw_sizes_cam1[i];
+        gCamCaps[cameraId]->preview_sizes_tbl_cnt = ARRAY_SIZE(new_prvw_sizes_cam1);
+
+        for (i = 0; i < ARRAY_SIZE(new_vid_sizes_cam1); i++)
+            gCamCaps[cameraId]->livesnapshot_sizes_tbl[i] = new_vid_sizes_cam1[i];
+        gCamCaps[cameraId]->livesnapshot_sizes_tbl_cnt = ARRAY_SIZE(new_vid_sizes_cam1);
+    }
 
     rc = NO_ERROR;
 
