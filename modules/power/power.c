@@ -33,6 +33,17 @@
 #include <hardware/power.h>
 
 enum {
+    STATE_NON_INTERACTIVE,
+    STATE_INTERACTIVE
+};
+
+#define INTERACTIVE_STATE_PROPERTY "sys.perf.interactive"
+#define NON_INTERACTIVE_PROP       "0"
+#define INTERACTIVE_PROP           "1"
+
+static int current_interactive_state = -1;
+
+enum {
     PROFILE_POWER_SAVE,
     PROFILE_BALANCED,
     PROFILE_HIGH_PERFORMANCE,
@@ -80,8 +91,22 @@ static void power_init(struct power_module *module __unused)
 }
 
 static void power_set_interactive(struct power_module *module __unused,
-                int on __unused)
+                int on)
 {
+    if (on == current_interactive_state)
+        return;
+
+    switch (on) {
+    case STATE_NON_INTERACTIVE:
+        property_set(INTERACTIVE_STATE_PROPERTY, NON_INTERACTIVE_PROP);
+        break;
+    case STATE_INTERACTIVE:
+    default:
+        property_set(INTERACTIVE_STATE_PROPERTY, INTERACTIVE_PROP);
+        break;
+    }
+
+    current_interactive_state = on;
 }
 
 static void set_power_profile(int profile)
