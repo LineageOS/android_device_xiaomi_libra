@@ -186,7 +186,7 @@ service fidodaemon /system/vendor/bin/fidodaemon
 service readmac /system/bin/readmac
     class late_start
     user system
-    group radio qcom_diag log net_raw wifi
+    group radio diag log net_raw wifi
     oneshot
     disabled
 

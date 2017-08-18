@@ -338,9 +338,9 @@ on post-fs-data
     # qti-logkit data
     mkdir /data/misc/qti-logkit/ 0771 system system
     mkdir /data/misc/qti-logkit/shared-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/shared-public/ 2770 system qcom_diag
+    mkdir /data/misc/qti-logkit/shared-public/ 2770 system diag
     mkdir /data/misc/qti-logkit/socket-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/socket-public/ 2750 system qcom_diag
+    mkdir /data/misc/qti-logkit/socket-public/ 2750 system diag
     mkdir /data/misc/qti-logkit/logdata/ 2750 system shell
 
 service perfd /system/vendor/bin/perfd
@@ -406,7 +406,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag
+    group bluetooth diag
     disabled
 
 on property:wc_transport.start_root=true
@@ -418,7 +418,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag system
+    group bluetooth diag system
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -553,7 +553,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log net_raw
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log net_raw
 
 service charger /charger
     class charger
@@ -572,14 +572,14 @@ on property:sys.qbcharger.enable=false
 service diag_mdlog_start /system/bin/diag_mdlog -n 20
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw net_raw readproc
+    group system diag sdcard_rw sdcard_r media_rw net_raw readproc
     disabled
     oneshot
 
 service diag_mdlog_stop /system/bin/diag_mdlog -k
     class late_start
     user shell
-    group system qcom_diag sdcard_rw sdcard_r media_rw net_raw readproc
+    group system diag sdcard_rw sdcard_r media_rw net_raw readproc
     disabled
     oneshot
 
@@ -593,7 +593,7 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
 service mmbn-daemon /system/bin/mmbn-daemon
     class main
     user root
-    group root system radio qcom_diag
+    group root system radio diag
     oneshot
 
 service gatekeeperd /system/bin/gatekeeperd /data/misc/gatekeeper
