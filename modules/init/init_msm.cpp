@@ -34,6 +34,9 @@ char const *heapgrowthlimit;
 char const *heapsize;
 char const *heapminfree;
 
+namespace android {
+namespace init {
+
 void check_device()
 {
     struct sysinfo sys;
@@ -66,3 +69,6 @@ void vendor_load_properties()
     property_set("dalvik.vm.heapminfree", heapminfree);
     property_set("dalvik.vm.heapmaxfree", "8m");
 }
+
+}  // namespace init
+}  // namespace android
