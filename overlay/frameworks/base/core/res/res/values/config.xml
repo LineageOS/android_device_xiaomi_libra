@@ -143,6 +143,7 @@
          when adapting to brighter or darker environments.  This parameter controls how quickly
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightFastDebounce">500</integer>
     <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
     <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
 
@@ -348,10 +349,6 @@
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
-    <!-- Button illumination -->
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
-    <integer name="config_buttonBrightnessSettingDefault">153</integer>
-
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/system/framework/arm64/boot-framework.oat"</item>
@@ -361,11 +358,5 @@
         <item>"/data/dalvik-cache/arm64/system@framework@boot.oat"</item>
         <item>"/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex"</item>
     </string-array>
-
-    <!-- Enable blur support -->
-    <bool name="config_uiBlurEnabled">true</bool>
-
-    <!-- Configuration to support SIM contact batch operation -->
-    <bool name="config_sim_phonebook_batch_operation">false</bool>
 
 </resources>
