@@ -135,3 +135,9 @@ ro.qc.sdk.sensors.gestures=true
 
 # Time services
 persist.timed.enable=true
+
+ro.secure=0
+ro.adb.secure=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=adb
