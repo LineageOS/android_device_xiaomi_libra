@@ -170,9 +170,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 # IPA
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
+# PRODUCT_PACKAGES += \
+#     ipacm \
+#     IPACM_cfg.xml
 
 # IPC router config
 PRODUCT_COPY_FILES += \
