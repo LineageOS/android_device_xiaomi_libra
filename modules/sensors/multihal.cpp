@@ -477,6 +477,34 @@ static void lazy_init_modules() {
 }
 
 /*
+ * Fix the fields of the sensor to be compliant with the API version
+ * reported by the wrapper.
+ */
+static void fix_sensor_fields(sensor_t& sensor) {
+    /*
+     * Becasue batching and flushing don't work modify the
+     * sensor fields to not report any fifo counts.
+     */
+    sensor.fifoReservedEventCount = 0;
+    sensor.fifoMaxEventCount = 0;
+
+    switch (sensor.type) {
+    /*
+     * Use the flags suggested by the sensors documentation.
+     */
+    case SENSOR_TYPE_TILT_DETECTOR:
+        sensor.flags = SENSOR_FLAG_WAKE_UP | SENSOR_FLAG_ON_CHANGE_MODE;
+        break;
+    /*
+     * Report a proper range to fix doze proximity check.
+     */
+    case SENSOR_TYPE_PROXIMITY:
+        sensor.maxRange = 5.0;
+        break;
+    }
+}
+
+/*
  * Lazy-initializes global_sensors_count, global_sensors_list, and module_sensor_handles.
  */
 static void lazy_init_sensors_list() {
@@ -535,11 +563,7 @@ static void lazy_init_sensors_list() {
             ALOGV("module_index %d, local_handle %d, global_handle %d",
                     module_index, local_handle, global_handle);
 
-            // HACK: Report a proper range to fix doze proximity check
-            if (mutable_sensor_list[mutable_sensor_index].type == SENSOR_TYPE_PROXIMITY) {
-                ALOGV("override proximity range");
-                mutable_sensor_list[mutable_sensor_index].maxRange = 5.0;
-            }
+            fix_sensor_fields(mutable_sensor_list[mutable_sensor_index]);
 
             mutable_sensor_index++;
         }
