@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-#include <hardware/sensors.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <dirent.h>
-#include <math.h>
-#include <poll.h>
-#include <pthread.h>
-#include <cutils/atomic.h>
+#include "SensorEventQueue.h"
 
 #define LOG_NDEBUG 1
 #include <cutils/log.h>
+#include <cutils/atomic.h>
+#include <hardware/sensors.h>
 
 #include <vector>
 #include <string>
 #include <fstream>
 #include <map>
-#include <string>
 
-#include <stdio.h>
+#include <dirent.h>
 #include <dlfcn.h>
-#include <SensorEventQueue.h>
-
+#include <errno.h>
+#include <fcntl.h>
 #include <limits.h>
+#include <math.h>
+#include <poll.h>
+#include <pthread.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 static pthread_mutex_t init_modules_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -152,7 +150,11 @@ void *writerTask(void* ptr) {
         ALOGV("writerTask before poll() - bufferSize = %d", bufferSize);
         eventsPolled = device->poll(device, buffer, bufferSize);
         ALOGV("writerTask poll() got %d events.", eventsPolled);
-        if (eventsPolled == 0) {
+        if (eventsPolled <= 0) {
+            if (eventsPolled < 0) {
+                ALOGV("writerTask ignored error %d from %s", eventsPolled, device->common.module->name);
+                ALOGE("ERROR: Fix %s so it does not return error from poll()", device->common.module->name);
+            }
             continue;
         }
         pthread_mutex_lock(&queue_mutex);
@@ -602,7 +604,7 @@ struct sensors_module_t HAL_MODULE_INFO_SYM = {
     .common = {
         .tag = HARDWARE_MODULE_TAG,
         .version_major = 1,
-        .version_minor = 0,
+        .version_minor = 1,
         .id = SENSORS_HARDWARE_MODULE_ID,
         .name = "MultiHal Sensor Module",
         .author = "Google, Inc",
@@ -623,7 +625,7 @@ static int open_sensors(const struct hw_module_t* hw_module, const char* name,
     sensors_poll_context_t *dev = new sensors_poll_context_t();
     memset(dev, 0, sizeof(sensors_poll_device_1_t));
     dev->proxy_device.common.tag = HARDWARE_DEVICE_TAG;
-    dev->proxy_device.common.version = SENSORS_DEVICE_API_VERSION_1_0;
+    dev->proxy_device.common.version = SENSORS_DEVICE_API_VERSION_1_3;
     dev->proxy_device.common.module = const_cast<hw_module_t*>(hw_module);
     dev->proxy_device.common.close = device__close;
     dev->proxy_device.activate = device__activate;
