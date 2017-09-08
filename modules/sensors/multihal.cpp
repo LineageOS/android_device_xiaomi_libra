@@ -447,8 +447,7 @@ static int device__batch(struct sensors_poll_device_1 *dev, int handle,
 }
 
 static int device__flush(struct sensors_poll_device_1 *dev, int handle) {
-    sensors_poll_context_t* ctx = (sensors_poll_context_t*) dev;
-    return ctx->flush(handle);
+    return -EINVAL;
 }
 
 static int open_sensors(const struct hw_module_t* module, const char* name,
