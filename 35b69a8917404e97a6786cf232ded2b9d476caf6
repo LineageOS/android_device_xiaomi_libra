@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "769d5207_db5af94f",
+        "filename": "audio/audio_effects.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 13951
+      },
+      "writtenOn": "2017-09-10T08:11:50Z",
+      "side": 1,
+      "message": "libdirac is still in /system/lib/soundfx",
+      "revId": "35b69a8917404e97a6786cf232ded2b9d476caf6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
