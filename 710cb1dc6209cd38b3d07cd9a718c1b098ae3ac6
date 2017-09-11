@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e1dc97_267b01b5",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-11T11:15:48Z",
+      "side": 1,
+      "message": "built from source",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 15
+      },
+      "revId": "710cb1dc6209cd38b3d07cd9a718c1b098ae3ac6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eff39785_881886ed",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-11T11:15:48Z",
+      "side": 1,
+      "message": "Added dynamically in /system/etc/init/",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 48
+      },
+      "revId": "710cb1dc6209cd38b3d07cd9a718c1b098ae3ac6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
