@@ -1,0 +1,24 @@
+cc_library_shared {
+    name: "libshim_thermalengine",
+    srcs: ["thermal_engine.c"],
+}
+
+cc_library_shared {
+    name: "rild_socket",
+    srcs: ["rild_socket.c"],
+}
+
+cc_library_shared {
+    name: "libshim_atomic",
+    srcs: ["atomic.cpp"],
+}
+
+cc_library_shared {
+    name: "libshims_get_process_name",
+    srcs: ["get_process_name.c"],
+}
+
+cc_library_shared {
+    name: "libshims_is_wifi_driver_loaded",
+    srcs: ["is_wifi_driver_loaded.cpp"],
+}
