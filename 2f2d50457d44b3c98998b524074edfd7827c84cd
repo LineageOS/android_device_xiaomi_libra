@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba1d1224_4e59d242",
+        "filename": "modules/light/Light.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-24T08:12:38Z",
+      "side": 1,
+      "message": "You better check if the compiler optimizes 0 * something to 0 automatically\nIf it doesn\u0027t use 0 directly",
+      "range": {
+        "startLine": 143,
+        "startChar": 31,
+        "endLine": 143,
+        "endChar": 45
+      },
+      "revId": "2f2d50457d44b3c98998b524074edfd7827c84cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
