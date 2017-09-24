@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23de8ab1_dbc4aa06",
+        "filename": "modules/consumerir/ConsumerIr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-24T10:17:35Z",
+      "side": 1,
+      "message": "strerror(errno)",
+      "revId": "2fb259c5418c56dd65fb049ec84438ffdba6a02b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
