@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "af3f2b3d_3b68e8d4",
+        "filename": "modules/consumerir/ConsumerIr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-24T11:02:05Z",
+      "side": 1,
+      "message": "fyi you can use std style log\nLOG(ERROR) \u003c\u003c \"failed to open\" \u003c\u003c LIRC_DEV_PATH \u003c\u003c \"error\" \u003c\u003c fd;",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "2fb259c5418c56dd65fb049ec84438ffdba6a02b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23de8ab1_dbc4aa06",
         "filename": "modules/consumerir/ConsumerIr.cpp",
         "patchSetId": 6
