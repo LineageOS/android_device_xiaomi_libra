@@ -11,5 +11,5 @@ set_prop(readmac, wlan_driver_status_prop)
 allow readmac wifi_data_file:file create_file_perms;
 allow readmac wifi_data_file:dir create_dir_perms;
 
-allow readmac self:socket create_socket_perms;
+allow readmac self:socket create_socket_perms_no_ioctl;
 allow readmac self:capability fsetid;
