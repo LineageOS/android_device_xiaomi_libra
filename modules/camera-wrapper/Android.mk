@@ -20,6 +20,7 @@ include $(CLEAR_VARS)
 
 LOCAL_C_INCLUDES := \
     framework/native/include \
+    frameworks/native/include/media/openmax \
     system/media/camera/include
 
 LOCAL_SRC_FILES := \
