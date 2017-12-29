@@ -1,0 +1,2 @@
+#Add connectionmanager service
+allow ims imscm_service:service_manager add;
