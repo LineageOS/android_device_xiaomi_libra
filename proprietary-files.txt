@@ -1,5 +1,5 @@
 # ADSP
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
@@ -34,15 +34,15 @@ vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 
 # Bluetooth
-bin/btnvtool
-bin/port-bridge
-bin/wcnss_filter
+bin/btnvtool:vendor/bin/btnvtool
+bin/port-bridge:vendor/bin/port-bridge
+bin/wcnss_filter:vendor/bin/wcnss_filter
 vendor/lib/libbtnv.so
 vendor/lib64/libCommandSvc.so
 vendor/lib64/libbtnv.so
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8992.so:lib/hw/camera.vendor.msm8992.so
 lib/libmm-qcamera.so
 lib/libmmcamera_interface.so
@@ -326,16 +326,16 @@ etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 
 # Gatekeeper
-bin/gatekeeperd|8edbd328928a6a6e1ead02bc4242fbeab5153909
+bin/gatekeeperd:vendor/bin/gatekeeperd|8edbd328928a6a6e1ead02bc4242fbeab5153909
 vendor/lib/hw/gatekeeper.msm8992.so|82fe599b9858b02bfb9564a267b0cc2678434589
 vendor/lib64/hw/gatekeeper.msm8992.so|2d7fecc68ca7fa0ce853c9f4460acfd2b3dc2d13
 
 # GPS
-bin/garden_app
-bin/loc_launcher
-bin/lowi-server
-bin/xtwifi-client
-bin/xtwifi-inet-agent
+bin/garden_app:vendor/bin/garden_app
+bin/loc_launcher:vendor/bin/loc_launcher
+bin/lowi-server:vendor/bin/lowi-server
+bin/xtwifi-client:vendor/bin/xtwifi-client
+bin/xtwifi-inet-agent:vendor/bin/xtwifi-inet-agent
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml|ee15154d1727abb16a14d89eb5e7fdc252a93f05
 etc/permissions/izat.xt.srv.xml
@@ -445,10 +445,10 @@ etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # IMS
-bin/ims_rtp_daemon
-bin/imscmservice
-bin/imsdatadaemon
-bin/imsqmidaemon
+bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
+bin/imscmservice:vendor/bin/imscmservice
+bin/imsdatadaemon:vendor/bin/imsdatadaemon
+bin/imsqmidaemon:vendor/bin/imsqmidaemon
 -vendor/app/ims/ims.apk
 -vendor/app/imssettings/imssettings.apk
 vendor/lib/lib-dplmedia.so
@@ -524,13 +524,13 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # Peripheral manager
-bin/pm-proxy
-bin/pm-service
+bin/pm-proxy:vendor/bin/pm-proxy
+bin/pm-service:vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # Qseecomm
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/bin/fidodaemon
 vendor/lib/hw/keystore.msm8992.so|c39f59e3a05bb4b5fb3e05f8a4867c3ebfff30e8
 vendor/lib/libQSEEComAPI.so
@@ -550,7 +550,7 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libtzdrmgenprov.so
 
 # Qualcomm framework
-bin/mmbn-daemon
+bin/mmbn-daemon:vendor/bin/mmbn-daemon
 etc/permissions/qti_permissions.xml|2826b33ed8e2756cc748c80bd6c466ff8af97ac5
 -lib/libqminvapi.so
 -lib64/libqminvapi.so
@@ -594,13 +594,13 @@ vendor/lib64/libxml.so
 -app/datastatusnotification/datastatusnotification.apk
 -app/fastdormancy/fastdormancy.apk
 -app/shutdownlistener/shutdownlistener.apk
-bin/diag_mdlog
-bin/irsc_util
-bin/netmgrd
-bin/qmuxd
-bin/rfs_access
-bin/rmt_storage
-bin/tftp_server
+bin/diag_mdlog:vendor/bin/diag_mdlog
+bin/irsc_util:vendor/bin/irsc_util
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/rfs_access:vendor/bin/rfs_access
+bin/rmt_storage:vendor/bin/rmt_storage
+bin/tftp_server:vendor/bin/tftp_server
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/data/qmi_config.xml
@@ -644,8 +644,8 @@ vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 
 # Thermal
-bin/energy-awareness
-bin/msm_irqbalance
+bin/energy-awareness:vendor/bin/energy-awareness
+bin/msm_irqbalance:vendor/bin/msm_irqbalance
 etc/thermal-engine-8992.conf
 vendor/bin/perfd
 vendor/bin/thermal-engine
@@ -667,14 +667,14 @@ vendor/lib64/libthermalioctl.so
 
 # Time services
 -app/TimeService/TimeService.apk
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 vendor/lib64/libTimeService.so
 -vendor/lib64/libtime_genoff.so
 
 # Wi-Fi
-bin/cnss-daemon
+bin/cnss-daemon:vendor/bin/cnss-daemon
 
 # Widevine
 vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
