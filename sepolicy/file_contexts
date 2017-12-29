@@ -13,3 +13,17 @@
 
 # IMS
 /system/vendor/bin/imscmservice			u:object_r:imscm_exec:s0
+
+# Data files
+/data/misc/audio(/.*)?				u:object_r:audio_data_file:s0
+/data/misc/bluetooth(/.*)?			u:object_r:bluetooth_data_file:s0
+/data/misc/camera(/.*)?				u:object_r:vendor_camera_data_file:s0
+/data/misc/display(/.*)?			u:object_r:display_misc_file:s0
+/data/misc/ipa(/.*)?				u:object_r:ipacm_data_file:s0
+/data/misc/location(/.*)?			u:object_r:location_data_file:s0
+/data/misc/location/mq/alarm_svc				u:object_r:location_socket:s0
+/data/misc/location/mq/location-mq-s			u:object_r:location_socket:s0
+/data/misc/location/xtra/socket_hal_xtra		u:object_r:location_socket:s0
+/data/misc/location/xtra/socket_xtra			u:object_r:location_socket:s0
+/data/misc/netmgr(/.*)? 			u:object_r:netmgrd_data_file:s0
+/data/misc/port_bridge(/.*)?		u:object_r:port_bridge_data_file:s0
