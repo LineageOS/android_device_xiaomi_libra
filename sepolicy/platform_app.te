@@ -1,0 +1,3 @@
+# Allow platform apps to interact with imscm daemon
+binder_call(platform_app, imscm)
+allow platform_app imscm_service:service_manager find;

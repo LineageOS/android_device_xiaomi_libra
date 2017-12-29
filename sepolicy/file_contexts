@@ -10,3 +10,6 @@
 /sys/kernel/debug/rmt_storage(/.*)?                                 u:object_r:debugfs_rmt_storage:s0
 
 /dev/block/bootdevice/by-name/bk1		u:object_r:metadata_block_device:s0
+
+# IMS
+/system/vendor/bin/imscmservice			u:object_r:imscm_exec:s0
